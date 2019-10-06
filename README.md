@@ -171,7 +171,7 @@ fn plus_one(x: i32) -> i32 {
 
 ## Control Flow
 
-### If loop
+### If Expressions
 
 ``` rust
 fn main() {
