@@ -611,6 +611,8 @@ let slice = &a[1..3];
 
 This slice has the type &[i32].
 
+[Bonus: Explanation of String and it's variation from burntsushi](https://www.reddit.com/r/rust/comments/gnd4bd/things_i_hate_about_rust/fr9179w/?utm_source=reddit&utm_medium=web2x&context=3 "Bonus: Explanation of String and it's variation from burntsushi")
+
 # Chapter 5 - Using Structs
 
 To define a struct, we enter the keyword struct and name the entire
