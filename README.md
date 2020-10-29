@@ -125,14 +125,14 @@
     - [Using Trait Objects That Allow for Values of Different Types](#using-trait-objects-that-allow-for-values-of-different-types)
     - [Object safety is required for Trait Object](#object-safety-is-required-for-trait-object)
     - [Implementing an OODP](#implementing-an-oodp)
-    - [Chapter 18: Patterns and matching](#chapter-18-patterns-and-matching)
-    - [Chapter 19: Advanced Features](#chapter-19-advanced-features)
-        - [Unsafe Superpowers](#unsafe-superpowers)
-            - [Dereferencing a raw pointer](#dereferencing-a-raw-pointer)
-            - [Calling an Unsafe Function or method](#calling-an-unsafe-function-or-method)
-            - [FFI](#ffi)
-            - [Accessing or Modifying a Mutable Static Variable](#accessing-or-modifying-a-mutable-static-variable)
-            - [Implementing an Unsafe Trait](#implementing-an-unsafe-trait)
+- [Chapter 18: Patterns and matching](#chapter-18-patterns-and-matching)
+- [Chapter 19: Advanced Features](#chapter-19-advanced-features)
+    - [Unsafe Superpowers](#unsafe-superpowers)
+        - [Dereferencing a raw pointer](#dereferencing-a-raw-pointer)
+        - [Calling an Unsafe Function or method](#calling-an-unsafe-function-or-method)
+        - [FFI](#ffi)
+        - [Accessing or Modifying a Mutable Static Variable](#accessing-or-modifying-a-mutable-static-variable)
+        - [Implementing an Unsafe Trait](#implementing-an-unsafe-trait)
     - [Advanced Traits](#advanced-traits)
         - [Specifying Placeholder Types in Trait Definitions with Associated Types](#specifying-placeholder-types-in-trait-definitions-with-associated-types)
         - [Default Generic Type Parameters and Operator Overloading](#default-generic-type-parameters-and-operator-overloading)
@@ -3245,7 +3245,7 @@ impl State for Published {
 }
 ```
 
-## Chapter 18: Patterns and matching
+# Chapter 18: Patterns and matching
 
 Patterns come in two forms: refutable and irrefutable. Patterns that
 will match for any possible value passed are irrefutable. An example
@@ -3264,9 +3264,9 @@ they’re intended to handle possible failure: the functionality of a
 conditional is in its ability to perform differently depending on
 success or failure.
 
-## Chapter 19: Advanced Features
+# Chapter 19: Advanced Features
 
-### Unsafe Superpowers
+## Unsafe Superpowers
 
 To switch to unsafe Rust, use the `unsafe` keyword and then start a new
 block that holds the unsafe code. You can take four actions in unsafe
@@ -3278,7 +3278,7 @@ superpowers include the ability to:
 * Access or modify a mutable static variable
 * Implement an unsafe trait
 
-#### Dereferencing a raw pointer
+### Dereferencing a raw pointer
 
 Raw pointers can be immutable or mutable and are written as:
 
@@ -3318,7 +3318,7 @@ let address = 0x012345usize;
 let r = address as *const i32;
 ```
 
-#### Calling an Unsafe Function or method
+### Calling an Unsafe Function or method
 
 Example:
 
@@ -3337,7 +3337,7 @@ Rust can’t guarantee we’ve met these requirements. By calling an
 this function’s documentation and take responsibility for upholding
 the function’s contracts.
 
-#### FFI
+### FFI
 
 ``` rust
 extern "C" {
@@ -3358,7 +3358,7 @@ function uses: the ABI defines how to call the function at the
 assembly level. The "C" ABI is the most common and follows the C
 programming language’s ABI.
 
-#### Accessing or Modifying a Mutable Static Variable
+### Accessing or Modifying a Mutable Static Variable
 
 In Rust, global variables are called static variables.
 
@@ -3392,7 +3392,7 @@ fn main() {
 }
 ```
 
-#### Implementing an Unsafe Trait
+### Implementing an Unsafe Trait
 
  A trait is unsafe when at least one of its methods has some invariant
  that the compiler can’t verify. We can declare that a trait is unsafe
