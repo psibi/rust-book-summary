@@ -3765,3 +3765,7 @@ There are three kinds of procedural macros:
 # Chapter 20
 
 This is a project and I won't be covering it here.
+
+# Miscellaneous
+
+- [Storing a closure in Rust](https://stackoverflow.com/q/27831944/1651941)
