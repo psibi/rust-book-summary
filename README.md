@@ -876,7 +876,7 @@ binary crate with the same name as the package. Similarly,
 `src/lib.rs` is the crate root of a library.
 
 A package can have multiple binary crates by placing files in the
-src/bin directory: each file will be a separate binary crate.
+`src/bin` directory: each file will be a separate binary crate.
 
 ## Defining Modules to Control Scope and Privacy
 
