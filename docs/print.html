@@ -1,0 +1,3394 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rust Book Summary</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">3.</strong> Programming a Guessing Game</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">4.</strong> Common Programming Concepts</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">5.</strong> Undersanding Ownership</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">6.</strong> Using Structs</a></li><li class="chapter-item expanded "><a href="chapter_6.html"><strong aria-hidden="true">7.</strong> Enums and Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">8.</strong> Managing Growing Projects with Packages, Crates and Modules</a></li><li class="chapter-item expanded "><a href="chapter_8.html"><strong aria-hidden="true">9.</strong> Common Collections</a></li><li class="chapter-item expanded "><a href="chapter_9.html"><strong aria-hidden="true">10.</strong> Error Handling</a></li><li class="chapter-item expanded "><a href="chapter_10.html"><strong aria-hidden="true">11.</strong> Generic Types, Traits and Lifetimes</a></li><li class="chapter-item expanded "><a href="chapter_11.html"><strong aria-hidden="true">12.</strong> Writing Automated Tests</a></li><li class="chapter-item expanded "><a href="chapter_12.html"><strong aria-hidden="true">13.</strong> Chapter 12</a></li><li class="chapter-item expanded "><a href="chapter_13.html"><strong aria-hidden="true">14.</strong> Functional language features: Iterators and Closures</a></li><li class="chapter-item expanded "><a href="chapter_14.html"><strong aria-hidden="true">15.</strong> More about Cargo and Crates.io</a></li><li class="chapter-item expanded "><a href="chapter_15.html"><strong aria-hidden="true">16.</strong> Smart Pointers</a></li><li class="chapter-item expanded "><a href="chapter_16.html"><strong aria-hidden="true">17.</strong> Fearless Concurrency</a></li><li class="chapter-item expanded "><a href="chapter_17.html"><strong aria-hidden="true">18.</strong> OOP Features of Rust</a></li><li class="chapter-item expanded "><a href="chapter_18.html"><strong aria-hidden="true">19.</strong> Patterns and matching</a></li><li class="chapter-item expanded "><a href="chapter_19.html"><strong aria-hidden="true">20.</strong> Advanced Features</a></li><li class="chapter-item expanded "><a href="chapter_20.html"><strong aria-hidden="true">21.</strong> Chapter 20</a></li><li class="chapter-item expanded "><a href="miscellaneous.html"><strong aria-hidden="true">22.</strong> Miscellaneous</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust Book Summary</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/">Book link</a></li>
+<li><a href="https://upsuper.github.io/rust-cheatsheet/">Rust cheatsheet</a></li>
+</ul>
+<p>The source code of this site is <a href="https://github.com/psibi/rust-book-summary">here</a>. Contributions and bug fixes
+welcome!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-1---getting-started"><a class="header" href="#chapter-1---getting-started">Chapter 1 - Getting started</a></h1>
+<ul>
+<li><a href="https://www.rust-lang.org/tools/install">Installation</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-2---programming-a-guessing-game"><a class="header" href="#chapter-2---programming-a-guessing-game">Chapter 2 - Programming a Guessing game</a></h1>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut guess = String::new();
+<span class="boring">}
+</span></code></pre></pre>
+<p>let statement is used to create a variable.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let foo = 5; // immutable
+let mut bar = 5; // mutable
+<span class="boring">}
+</span></code></pre></pre>
+<p>The <code>::</code> syntax in the <code>::new</code> line indicates that new is an
+associated function of the <code>String</code> type. An associated function is
+implemented on a type, in this case <code>String</code>, rather than on a
+particular instance of a <code>String</code>. Some languages call this a static
+method.</p>
+<p>This <code>new</code> function creates a new, empty string. You’ll find a new
+function on many types, because it’s a common name for a function that
+makes a new value of some kind.</p>
+<p>Crate link: https://doc.rust-lang.org/stable/std/string/struct.String.html#method.new</p>
+<pre><pre class="playground"><code class="language-rust">use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+
+fn main() {
+    println!(&quot;Guess the number!&quot;);
+
+    let secret_number = rand::thread_rng().gen_range(1, 101);
+
+    loop {
+        println!(&quot;Please input your guess.&quot;);
+
+        let mut guess = String::new();
+
+        io::stdin().read_line(&amp;mut guess)
+            .expect(&quot;Failed to read line&quot;);
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) =&gt; num,
+            Err(_) =&gt; continue,
+        };
+
+        println!(&quot;You guessed: {}&quot;, guess);
+
+        match guess.cmp(&amp;secret_number) {
+            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
+            Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
+            Ordering::Equal =&gt; {
+                println!(&quot;You win!&quot;);
+                break;
+            }
+        }
+    }
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-3---common-programming-concepts"><a class="header" href="#chapter-3---common-programming-concepts">Chapter 3 - Common Programming Concepts</a></h1>
+<h2 id="constants"><a class="header" href="#constants">Constants</a></h2>
+<ul>
+<li>Constants are values that are bound to a name and not allowed to
+change.</li>
+<li>You declare constants using the <code>const</code> keyword instead of the <code>let</code>
+keyword, and the type of the value must be annotated.</li>
+<li>In Rust, constants can be set only to a constant expression, not the
+result of a function call or any other value that could only be
+computed at runtime.</li>
+</ul>
+<p>Example:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>const MAX_POINTS: u32 = 100_000;
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="shadowing"><a class="header" href="#shadowing">Shadowing</a></h2>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = 5;
+
+    let x = x + 1; // shadow the first x
+
+    let x = x * 2; // shadow the second x
+
+    println!(&quot;The value of x is: {}&quot;, x);
+}
+</code></pre></pre>
+<p>Difference between <code>mut</code> and shadowing is that because we’re
+effectively creating a new variable when we use the let keyword again,
+we can change the type of the value but reuse the same name.</p>
+<h2 id="data-types"><a class="header" href="#data-types">Data types</a></h2>
+<p>Rust has two kinds of data types:</p>
+<h3 id="scalar-types"><a class="header" href="#scalar-types">Scalar types</a></h3>
+<p>A scalar type represents a single value. Rust has four primary scalar
+types: integers, floating-point numbers, Booleans, and characters.</p>
+<ul>
+<li>Signed integer: i8, i16, i32, i64, i128, isize</li>
+<li>Unsigned integer: u8, u16, u32, u64, u128, usize</li>
+<li>Floating point: f32, f64</li>
+<li>Boolean: bool</li>
+<li>Character: char</li>
+</ul>
+<p>Rust’s char type is four bytes in size and represents a Unicode Scalar
+Value.</p>
+<h3 id="compound-types"><a class="header" href="#compound-types">Compound types</a></h3>
+<p>Compound types can group multiple values into one type. Rust has two
+primitive compound types: tuples and arrays.</p>
+<pre><code>let tuple: (i32, f64, u8) = (500, 6.4, 1);
+</code></pre>
+<p>Unlike a tuple, every element of an array must have the same
+type. Arrays in Rust are different from arrays in some other languages
+because arrays in Rust have a fixed length, like tuples.</p>
+<pre><code>let a: [i32; 5] = [1, 2, 3, 4, 5];
+</code></pre>
+<p>Another way of writing arrays:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a = [3; 5];
+let b = [3, 3, 3, 3, 3]; // equivalent as a array
+let first = a[0]; // Access element
+<span class="boring">}
+</span></code></pre></pre>
+<p>Note that all the types discussed above are stored in stack.</p>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<p>Some examples:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    another_function(5, 6);
+}
+
+fn another_function(x: i32, y: i32) {
+    println!(&quot;The value of x is: {}&quot;, x);
+    println!(&quot;The value of y is: {}&quot;, y);
+}
+
+fn plus_one(x: i32) -&gt; i32 {
+    x + 1
+}
+</code></pre></pre>
+<h2 id="control-flow"><a class="header" href="#control-flow">Control Flow</a></h2>
+<h3 id="if-expressions"><a class="header" href="#if-expressions">If Expressions</a></h3>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let number = 3;
+
+    if number &lt; 5 {
+        println!(&quot;condition was true&quot;);
+    } else {
+        println!(&quot;condition was false&quot;);
+    }
+}
+</code></pre></pre>
+<h3 id="loop-construct"><a class="header" href="#loop-construct">loop construct</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>loop {
+  println!(&quot;again!&quot;);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="while-loop"><a class="header" href="#while-loop">while loop</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>while number != 0 {
+     println!(&quot;{}!&quot;, number);
+
+     number = number - 1;
+ }
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="for-loop"><a class="header" href="#for-loop">for loop</a></h3>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a.iter() {
+        println!(&quot;the value is: {}&quot;, element);
+    }
+}
+</code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-4---understanding-ownership"><a class="header" href="#chapter-4---understanding-ownership">Chapter 4 - Understanding Ownership</a></h1>
+<h2 id="heap-vs-stack"><a class="header" href="#heap-vs-stack">Heap vs Stack</a></h2>
+<ul>
+<li>When your code calls a function, the values passed into the function
+(including, potentially, pointers to data on the heap) and the
+function’s local variables get pushed onto the stack. When the
+function is over, those values get popped off the stack.</li>
+<li>Accessing data in the heap is slower than accessing data on the
+stack because you have to follow a pointer to get there.</li>
+</ul>
+<h2 id="ownership-rules"><a class="header" href="#ownership-rules">Ownership rules</a></h2>
+<ul>
+<li>Each value in Rust has a variable that’s called its owner.</li>
+<li>There can only be one owner at a time.</li>
+<li>When the owner goes out of scope, the value will be dropped.</li>
+</ul>
+<h2 id="the-string-type"><a class="header" href="#the-string-type">The String type</a></h2>
+<ul>
+<li>This type is stored on heap.</li>
+<li>Can be mutated.</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>{
+    let s1 = String::from(&quot;hello&quot;); // s1 is valid from this point forward
+
+    // do stuff with s1
+}                                  // this scope is now over, and s1 is no
+                                   // longer valid
+<span class="boring">}
+</span></code></pre></pre>
+<p>When a variable goes out of scope, Rust calls a special function for
+us. This function is called <code>drop</code>, and it’s where the author of
+<code>String</code> can put the code to return the memory. Rust calls drop
+automatically at the closing curly bracket.</p>
+<blockquote>
+<p>Representation of s1 in memory</p>
+</blockquote>
+<p><img src="./images/ownership1.png" alt="Representation of s1 in memory" /></p>
+<h2 id="ways-variable-and-data-interact"><a class="header" href="#ways-variable-and-data-interact">Ways Variable and Data interact</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 5;
+let y = x;
+<span class="boring">}
+</span></code></pre></pre>
+<ul>
+<li>In the above code, we bind the value 5 to x; then make a <em>copy</em> of the
+value in x and bind it to y.</li>
+<li>This happens because integers are simple values with a known, fixed
+size, and these two 5 values are pushed onto the stack.</li>
+</ul>
+<p>Now let's look at the <code>String</code> version:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s1 = String::from(&quot;hello&quot;);
+let s2 = s1;
+<span class="boring">}
+</span></code></pre></pre>
+<p>This looks very similar to the previous code, so we might assume that
+the way it works would be the same: that is, the second line would
+make a copy of the value in s1 and bind it to s2. But this isn’t quite
+what happens.</p>
+<blockquote>
+<p>What happens after s2 = s1</p>
+</blockquote>
+<p><img src="./images/ownership2.png" alt="s2=s1" /></p>
+<blockquote>
+<p>But s1 gets invalidated</p>
+</blockquote>
+<p><img src="./images/ownership4.png" alt="s1 gets invalidated" /></p>
+<h2 id="ownership-and-functions"><a class="header" href="#ownership-and-functions">Ownership and functions</a></h2>
+<p>The semantics for passing a value to a function are similar to those
+for assigning a value to a variable. Passing a variable to a function
+will move or copy, just as assignment does.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let s = String::from(&quot;hello&quot;);  // s comes into scope
+
+    takes_ownership(s);             // s's value moves into the function...
+                                    // ... and so is no longer valid here
+
+    let x = 5;                      // x comes into scope
+
+    makes_copy(x);                  // x would move into the function,
+                                    // but i32 is Copy, so it’s okay to still
+                                    // use x afterward
+
+} // Here, x goes out of scope, then s. But because s's value was moved, nothing
+  // special happens.
+
+fn takes_ownership(some_string: String) { // some_string comes into scope
+    println!(&quot;{}&quot;, some_string);
+} // Here, some_string goes out of scope and `drop` is called. The backing
+  // memory is freed.
+
+fn makes_copy(some_integer: i32) { // some_integer comes into scope
+    println!(&quot;{}&quot;, some_integer);
+} // Here, some_integer goes out of scope. Nothing special happens.
+</code></pre></pre>
+<h2 id="references-and-borrowing"><a class="header" href="#references-and-borrowing">References and Borrowing</a></h2>
+<p>Example code of References:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let s1 = String::from(&quot;hello&quot;);
+
+    let len = calculate_length(&amp;s1);
+
+    println!(&quot;The length of '{}' is {}.&quot;, s1, len);
+}
+
+fn calculate_length(s: &amp;String) -&gt; usize {
+    s.len()
+}
+</code></pre></pre>
+<p>These ampersands are references, and they allow you to refer to some
+value without taking ownership of it.</p>
+<p>We call having references as function parameters borrowing.</p>
+<p>Just as variables are immutable by default, so are references. We’re
+not allowed to modify something we have a immutable reference to.</p>
+<h2 id="mutuable-references"><a class="header" href="#mutuable-references">Mutuable references</a></h2>
+<p>Example code of mutable reference:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let mut s = String::from(&quot;hello&quot;);
+
+    change(&amp;mut s);
+}
+
+fn change(some_string: &amp;mut String) {
+    some_string.push_str(&quot;, world&quot;);
+}
+</code></pre></pre>
+<p>But mutable references have one big restriction: you can have only one
+mutable reference to a particular piece of data in a particular
+scope. This code will fail:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut s = String::from(&quot;hello&quot;);
+
+let r1 = &amp;mut s;
+let r2 = &amp;mut s;
+<span class="boring">}
+</span></code></pre></pre>
+<p>The benefit of having this restriction is that Rust can prevent data
+races at compile time. A similar rule exists for combining mutable and
+immutable references:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut s = String::from(&quot;hello&quot;);
+
+let r1 = &amp;s; // no problem
+let r2 = &amp;s; // no problem
+let r3 = &amp;mut s; // BIG PROBLEM
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="the-slice-type"><a class="header" href="#the-slice-type">The Slice type</a></h2>
+<p>Another data type that does not have ownership (the other one is
+references) is the slice.</p>
+<h3 id="string-slices"><a class="header" href="#string-slices">String Slices</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = String::from(&quot;hello world&quot;);
+
+let hello = &amp;s[0..5];
+let world = &amp;s[6..11];
+<span class="boring">}
+</span></code></pre></pre>
+<p>We can create slices using a range within brackets by specifying
+[starting_index..ending_index], where starting_index is the first
+position in the slice and ending_index is one more than the last
+position in the slice.</p>
+<p>Other examples:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = String::from(&quot;hello&quot;);
+
+let slice = &amp;s[0..2];
+let slice = &amp;s[..2];
+<span class="boring">}
+</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = String::from(&quot;hello&quot;);
+
+let len = s.len();
+
+let slice = &amp;s[3..len];
+let slice = &amp;s[3..];
+<span class="boring">}
+</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = String::from(&quot;hello&quot;);
+
+let len = s.len();
+
+let slice = &amp;s[0..len];
+let slice = &amp;s[..];
+<span class="boring">}
+</span></code></pre></pre>
+<p>The type that signifies “string slice” is written as &amp;str:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn first_word(s: &amp;String) -&gt; &amp;str {
+    let bytes = s.as_bytes();
+
+    for (i, &amp;item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &amp;s[0..i];
+        }
+    }
+
+    &amp;s[..]
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="other-slices"><a class="header" href="#other-slices">Other Slices</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a = [1, 2, 3, 4, 5];
+
+let slice = &amp;a[1..3];
+<span class="boring">}
+</span></code></pre></pre>
+<p>This slice has the type &amp;[i32].</p>
+<p><a href="https://www.reddit.com/r/rust/comments/gnd4bd/things_i_hate_about_rust/fr9179w/?utm_source=reddit&amp;utm_medium=web2x&amp;context=3" title="Bonus: Explanation of String and it's variation from burntsushi">Bonus: Explanation of String and it's variation from burntsushi</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-5---using-structs"><a class="header" href="#chapter-5---using-structs">Chapter 5 - Using Structs</a></h1>
+<p>To define a struct, we enter the keyword struct and name the entire
+struct.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Immutable instance of the Struct:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let user1 = User {
+    email: String::from(&quot;someone@example.com&quot;),
+    username: String::from(&quot;someusername123&quot;),
+    active: true,
+    sign_in_count: 1,
+};
+<span class="boring">}
+</span></code></pre></pre>
+<p>Mutuable instance of the Struct:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut user1 = User {
+    email: String::from(&quot;someone@example.com&quot;),
+    username: String::from(&quot;someusername123&quot;),
+    active: true,
+    sign_in_count: 1,
+};
+
+user1.email = String::from(&quot;anotheremail@example.com&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="some-syntax-sugars"><a class="header" href="#some-syntax-sugars">Some syntax sugars</a></h2>
+<p>Field init shorthand:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn build_user(email: String, username: String) -&gt; User {
+    User {
+        email,
+        username,
+        active: true,
+        sign_in_count: 1,
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Stuct update syntax:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let user2 = User {
+    email: String::from(&quot;another@example.com&quot;),
+    username: String::from(&quot;anotherusername567&quot;),
+    ..user1
+};
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="tuple-structs"><a class="header" href="#tuple-structs">Tuple Structs</a></h2>
+<p>You can also define structs that look similar to tuples, called tuple
+structs. Tuple structs have the added meaning the struct name provides
+but don’t have names associated with their fields; rather, they just
+have the types of the fields.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+
+let black = Color(0, 0, 0);
+let origin = Point(0, 0, 0);
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="method-syntax"><a class="header" href="#method-syntax">Method Syntax</a></h2>
+<p>Methods are different from functions in that they’re defined within
+the context of a struct (or an enum or a trait object), and their
+first parameter is always self, which represents the instance of the
+struct the method is being called on.</p>
+<p>Example code:</p>
+<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&amp;self) -&gt; u32 {
+        self.width * self.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle { width: 30, height: 50 };
+
+    println!(
+        &quot;The area of the rectangle is {} square pixels.&quot;,
+        rect1.area()
+    );
+}
+</code></pre></pre>
+<p>In the signature for area, we use &amp;self instead of rectangle:
+&amp;Rectangle because Rust knows the type of self is Rectangle due to
+this method’s being inside the impl Rectangle context. Note that we
+still need to use the &amp; before self, just as we did in
+&amp;Rectangle. Methods can take ownership of self, borrow self immutably
+as we’ve done here, or borrow self mutably, just as they can any other
+parameter.</p>
+<h2 id="associated-functions"><a class="header" href="#associated-functions">Associated functions</a></h2>
+<p>Another useful feature of impl blocks is that we’re allowed to define
+functions within impl blocks that don’t take self as a
+parameter. These are called associated functions because they’re
+associated with the struct.</p>
+<p>Associated functions are often used for constructors that will return
+a new instance of the struct:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Rectangle {
+    fn square(size: u32) -&gt; Rectangle {
+        Rectangle { width: size, height: size }
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>To call this associated function, we use the :: syntax with the struct
+name; <code>let sq = Rectangle::square(3);</code> is an example.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-6---enums-and-pattern-matching"><a class="header" href="#chapter-6---enums-and-pattern-matching">Chapter 6 - Enums and Pattern matching</a></h1>
+<p>Example code:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+impl Message {
+    fn call(&amp;self) {
+        // method body would be defined here
+    }
+}
+
+let m = Message::Write(String::from(&quot;hello&quot;));
+m.call();
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="option-type"><a class="header" href="#option-type">Option type</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Option&lt;T&gt; {
+    Some(T),
+    None,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="match-control-flow-operator"><a class="header" href="#match-control-flow-operator"><code>match</code> Control Flow Operator</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Debug)] // so we can inspect the state in a minute
+enum UsState {
+    Alabama,
+    Alaska,
+    // --snip--
+}
+
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+}
+
+fn value_in_cents(coin: Coin) -&gt; u8 {
+    match coin {
+        Coin::Penny =&gt; 1,
+        Coin::Nickel =&gt; 5,
+        Coin::Dime =&gt; 10,
+        Coin::Quarter(state) =&gt; {
+            println!(&quot;State quarter from {:?}!&quot;, state);
+            25
+        },
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="matching-with-option"><a class="header" href="#matching-with-option">Matching with Option<T></a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn plus_one(x: Option&lt;i32&gt;) -&gt; Option&lt;i32&gt; {
+    match x {
+        None =&gt; None,
+        Some(i) =&gt; Some(i + 1),
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="if-let"><a class="header" href="#if-let">if let</a></h2>
+<p>This code:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let some_u8_value = Some(0u8);
+match some_u8_value {
+    Some(3) =&gt; println!(&quot;three&quot;),
+    _ =&gt; (),
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>can be written as:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>if let Some(3) = some_u8_value {
+    println!(&quot;three&quot;);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The <code>else</code> part is optional and you can include that too.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-7---managing-growing-projects-with-packages-crates-and-modules"><a class="header" href="#chapter-7---managing-growing-projects-with-packages-crates-and-modules">Chapter 7 - Managing Growing Projects with Packages, Crates, and Modules</a></h1>
+<p>A package can contain multiple binary crates and optionally one
+library crate. For very large projects of a set of interrelated
+packages that evolve together, Cargo provides workspaces.</p>
+<p>Rust has a number of features that allow you to manage your code’s
+organization, including which details are exposed and which details
+are private, and what names are in each scope in your programs. These
+features are sometimes collectively referred to as the module system
+and include:</p>
+<ul>
+<li>Packages: A Cargo feature that lets you build, test, and share crates</li>
+<li>Crates: A tree of modules that produces a library or executable</li>
+<li>Modules and use: Let you control the organization, scope, and privacy of paths</li>
+<li>Paths: A way of naming an item, such as a struct, function, or module</li>
+</ul>
+<h2 id="packages-and-crates"><a class="header" href="#packages-and-crates">Packages and Crates</a></h2>
+<p>A crate is a binary or library.</p>
+<p>A package is one or more crates that provide a set of functionality. A
+package contains a Cargo.toml file that describes how to build those
+crates.</p>
+<p>Cargo follows a convention that <code>src/main.rs</code> is the crate root of a
+binary crate with the same name as the package. Similarly,
+<code>src/lib.rs</code> is the crate root of a library.</p>
+<p>A package can have multiple binary crates by placing files in the
+<code>src/bin</code> directory: each file will be a separate binary crate.</p>
+<h2 id="defining-modules-to-control-scope-and-privacy"><a class="header" href="#defining-modules-to-control-scope-and-privacy">Defining Modules to Control Scope and Privacy</a></h2>
+<p>Modules let us organize code within a crate into groups for
+readability and easy reuse. Modules also control the privacy of items,
+which is whether an item can be used by outside code (public) or
+whether it’s an internal implementation detail and not available for
+outside use (private).</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>$ cargo new --lib restaurant
+$ cat src/lib.rs
+mod front_of_house {
+    mod hosting {
+        fn add_to_waitlist() {}
+
+        fn seat_at_table() {}
+    }
+
+    mod serving {
+        fn take_order() {}
+
+        fn serve_order() {}
+
+        fn take_payment() {}
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The keyworld <code>mod</code> is used to create modules.</p>
+<h2 id="paths-for-referring-to-an-item-in-the-module-tree"><a class="header" href="#paths-for-referring-to-an-item-in-the-module-tree">Paths for Referring to an Item in the Module Tree</a></h2>
+<p>To show Rust where to find an item in a module tree, we use a path in
+the same way we use a path when navigating a filesystem. If we want to
+call a function, we need to know its path.</p>
+<p>A path can take two forms:</p>
+<ul>
+<li>An absolute path starts from a crate root by using a crate name or a
+literal crate.</li>
+<li>A relative path starts from the current module and uses self, super,
+or an identifier in the current module.</li>
+</ul>
+<p>Both absolute and relative paths are followed by one or more
+identifiers separated by double colons (::).</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+pub fn eat_at_restaurant() {
+    // Absolute path
+    crate::front_of_house::hosting::add_to_waitlist();
+
+    // Relative path
+    front_of_house::hosting::add_to_waitlist();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Note that <code>crate</code> is a keyword.</p>
+<h2 id="super-keyword"><a class="header" href="#super-keyword">super keyword</a></h2>
+<p>We can also construct relative paths that begin in the parent module
+by using super at the start of the path. Example:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn serve_order() {}
+
+mod back_of_house {
+    fn fix_incorrect_order() {
+        cook_order();
+        super::serve_order();
+    }
+
+    fn cook_order() {}
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="making-structs-and-enums-public"><a class="header" href="#making-structs-and-enums-public">Making Structs and Enums Public</a></h2>
+<p>If we use pub before a struct definition, we make the struct public,
+but the struct’s fields will still be private. We can make each field
+public or not on a case-by-case basis.</p>
+<p>In contrast, if we make an enum public, all of its variants are then
+public.</p>
+<h2 id="bringing-paths-into-scope-with-the-use-keyword"><a class="header" href="#bringing-paths-into-scope-with-the-use-keyword">Bringing Paths into Scope with the use keyword</a></h2>
+<p>We can bring a path into a scope once and then call the items in that
+path as if they’re local items with the use keyword.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Specifying a relative path with use is slightly different. Instead of
+starting from a name in the current scope, we must start the path
+given to use with the keyword <code>self</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+use self::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>You can also do this:</p>
+<pre><code>use self::front_of_house::hosting::add_to_waitlist;
+</code></pre>
+<p>and don't need to qualify. But that isn't considered good practice for
+functions (For structs and enum it is fine).</p>
+<h2 id="providing-new-names-with-the-as-keyword"><a class="header" href="#providing-new-names-with-the-as-keyword">Providing New Names with the as Keyword</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fmt::Result;
+use std::io::Result as IoResult;
+
+fn function1() -&gt; Result {
+}
+
+fn function2() -&gt; IoResult&lt;()&gt; {
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="re-exporting-names-with-pub-use"><a class="header" href="#re-exporting-names-with-pub-use">Re-exporting Names with pub use</a></h2>
+<p>When we bring a name into scope with the use keyword, the name
+available in the new scope is private. To enable the code that calls
+our code to refer to that name as if it had been defined in that
+code’s scope, we can combine pub and use. This technique is called
+re-exporting because we’re bringing an item into scope but also making
+that item available for others to bring into their scope.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+pub use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="using-external-packages"><a class="header" href="#using-external-packages">Using External packages</a></h2>
+<pre><pre class="playground"><code class="language-rust">use rand::Rng;
+fn main() {
+    let secret_number = rand::thread_rng().gen_range(1, 101);
+}
+</code></pre></pre>
+<p>Also make sure to add the dependency to the <code>cargo.toml</code> file:</p>
+<pre><code class="language-toml">[dependencies]
+rand = &quot;0.5.5&quot;
+</code></pre>
+<h2 id="using-nested-paths-to-clean-up-large-use-lists"><a class="header" href="#using-nested-paths-to-clean-up-large-use-lists">Using Nested Paths to Clean Up Large use Lists</a></h2>
+<p>This code:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::cmp::Ordering;
+use std::io;
+<span class="boring">}
+</span></code></pre></pre>
+<p>is same as:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::{cmp::Ordering, io};
+<span class="boring">}
+</span></code></pre></pre>
+<p>Similarly, this code:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::io;
+use std::io::Write;
+<span class="boring">}
+</span></code></pre></pre>
+<p>is same as:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::io::{self, Write};
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="the-glob-operator"><a class="header" href="#the-glob-operator">The Glob Operator</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::collections::*;
+<span class="boring">}
+</span></code></pre></pre>
+<p>this brings all public items defined in a path into scope.</p>
+<h2 id="separating-modules-into-different-files"><a class="header" href="#separating-modules-into-different-files">Separating modules into Different files</a></h2>
+<p>In <code>src/lib.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>mod front_of_house;
+
+pub use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>In <code>src/front_of_house.rs</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub mod hosting {
+    pub fn add_to_waitlist() {}
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Using a semicolon after mod front_of_house rather than using a block
+tells Rust to load the contents of the module from another file with
+the same name as the module.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-8---common-collections"><a class="header" href="#chapter-8---common-collections">Chapter 8 - Common Collections</a></h1>
+<ul>
+<li>The data these collections point to is stored in the heap.</li>
+</ul>
+<h2 id="vectors"><a class="header" href="#vectors">Vectors</a></h2>
+<ul>
+<li>Type: <code>Vec&lt;T&gt;</code></li>
+<li>Puts all the value next to each other in the memory.</li>
+</ul>
+<p>Example:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let v: Vec&lt;i32&gt; = Vec::new();
+let v = vec![1, 2, 3]; // Macro style
+
+let mut v = Vec::new();
+
+v.push(5);
+v.push(6);
+v.push(7);
+v.push(8);
+
+// Example of looping through immutable referece
+let v = vec![100, 32, 57];
+for i in &amp;v {
+    println!(&quot;{}&quot;, i);
+}
+
+// Example of looping through mutable referece
+let mut v = vec![100, 32, 57];
+for i in &amp;mut v {
+    println!(&quot;{}&quot;, i);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="strings"><a class="header" href="#strings">Strings</a></h2>
+<p>Example:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut s = String::new();
+
+let s = String::from(&quot;initial contents&quot;);
+
+let mut s = String::from(&quot;foo&quot;);
+s.push_str(&quot;bar&quot;);
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="hashmap"><a class="header" href="#hashmap">HashMap</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::collections::HashMap;
+
+let mut scores = HashMap::new();
+
+scores.insert(String::from(&quot;Blue&quot;), 10);
+scores.insert(String::from(&quot;Yellow&quot;), 50);
+
+let team_name = String::from(&quot;Blue&quot;);
+let score = scores.get(&amp;team_name);
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="hashmap-and-ownership"><a class="header" href="#hashmap-and-ownership">Hashmap and ownership</a></h3>
+<p>For types that implement the Copy trait, like i32, the values are
+copied into the hash map. For owned values like String, the values
+will be moved and the hash map will be the owner of those values.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::collections::HashMap;
+
+let field_name = String::from(&quot;Favorite color&quot;);
+let field_value = String::from(&quot;Blue&quot;);
+
+let mut map = HashMap::new();
+map.insert(field_name, field_value);
+// field_name and field_value are invalid at this point, try using them and
+// see what compiler error you get!
+<span class="boring">}
+</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-9---error-handling"><a class="header" href="#chapter-9---error-handling">Chapter 9 - Error Handling</a></h1>
+<ul>
+<li>Rust groups errors into two major categories: recoverable and
+unrecoverable errors.</li>
+<li>Rust doesn’t have exceptions. Instead, it has the type Result&lt;T, E&gt;
+for recoverable errors and the panic! macro that stops execution
+when the program encounters an unrecoverable error.</li>
+</ul>
+<h2 id="panic-macro"><a class="header" href="#panic-macro">panic! macro</a></h2>
+<p>When the <code>panic!</code> macro executes, your program will print a failure
+message, unwind and clean up the stack, and then quit.</p>
+<p>But this walking back and cleanup is a lot of work. The alternative
+is to immediately abort, which ends the program without cleaning
+up. For example, if you want to abort on panic in release mode, add
+this to <code>cargol.toml</code>:</p>
+<pre><code class="language-toml">[profile.release]
+panic = 'abort'
+</code></pre>
+<h2 id="recoverable-errors-with-result"><a class="header" href="#recoverable-errors-with-result">Recoverable errors with Result</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Result&lt;T, E&gt; {
+    Ok(T),
+    Err(E),
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="shortcuts-for-panic-on-error-unwrap-and-expect"><a class="header" href="#shortcuts-for-panic-on-error-unwrap-and-expect">Shortcuts for Panic on Error: unwrap and expect</a></h2>
+<p>If the Result value is the Ok variant, unwrap will return the value
+inside the Ok. If the Result is the Err variant, unwrap will call the
+panic! macro for us:</p>
+<pre><pre class="playground"><code class="language-rust">use std::fs::File;
+
+fn main() {
+    let f = File::open(&quot;hello.txt&quot;).unwrap();
+}
+</code></pre></pre>
+<p>Another method, expect, which is similar to unwrap, lets us also
+choose the panic! error message. Using expect instead of unwrap and
+providing good error messages can convey your intent and make tracking
+down the source of a panic easier. The syntax of expect looks like
+this:</p>
+<pre><pre class="playground"><code class="language-rust">use std::fs::File;
+
+fn main() {
+    let f = File::open(&quot;hello.txt&quot;).expect(&quot;Failed to open hello.txt&quot;);
+}
+</code></pre></pre>
+<h2 id="propagating-errors"><a class="header" href="#propagating-errors">Propagating errors</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::io;
+use std::io::Read;
+use std::fs::File;
+
+fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
+    let f = File::open(&quot;hello.txt&quot;);
+
+    let mut f = match f {
+        Ok(file) =&gt; file,
+        Err(e) =&gt; return Err(e),
+    };
+
+    let mut s = String::new();
+
+    match f.read_to_string(&amp;mut s) {
+        Ok(_) =&gt; Ok(s),
+        Err(e) =&gt; Err(e),
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The above code can be written as:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::io;
+use std::io::Read;
+use std::fs::File;
+
+fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
+    let mut f = File::open(&quot;hello.txt&quot;)?;
+    let mut s = String::new();
+    f.read_to_string(&amp;mut s)?;
+    Ok(s)
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>There is a difference between what the match expression and what <code>?</code>
+operator do: error values that have the ? operator called on them go
+through the <code>from</code> function, defined in the <code>From</code> trait in the
+standard library, which is used to convert errors from one type into
+another.</p>
+<p>Note that the <code>?</code> operator can only be used in functions that have a
+return type of Result.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-10---generic-types-traits-and-lifetimes"><a class="header" href="#chapter-10---generic-types-traits-and-lifetimes">Chapter 10 - Generic Types, Traits and Lifetimes</a></h1>
+<p>Generics are abstract stand-ins for concrete types or other properties.</p>
+<h2 id="generic-structs"><a class="header" href="#generic-structs">Generic Structs</a></h2>
+<pre><pre class="playground"><code class="language-rust">struct Point&lt;T&gt; {
+    x: T,
+    y: T,
+}
+
+fn main() {
+    let integer = Point { x: 5, y: 10 };
+    let float = Point { x: 1.0, y: 4.0 };
+}
+</code></pre></pre>
+<h2 id="enum-structs"><a class="header" href="#enum-structs">Enum Structs</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Option&lt;T&gt; {
+    Some(T),
+    None,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="generics-in-method-definitions"><a class="header" href="#generics-in-method-definitions">Generics in method definitions</a></h2>
+<pre><pre class="playground"><code class="language-rust">struct Point&lt;T&gt; {
+    x: T,
+    y: T,
+}
+
+impl&lt;T&gt; Point&lt;T&gt; {
+    fn x(&amp;self) -&gt; &amp;T {
+        &amp;self.x
+    }
+}
+
+fn main() {
+    let p = Point { x: 5, y: 10 };
+
+    println!(&quot;p.x = {}&quot;, p.x());
+}
+</code></pre></pre>
+<h3 id="traits-defining-shared-behaviour"><a class="header" href="#traits-defining-shared-behaviour">Traits: Defining shared behaviour</a></h3>
+<p>A trait tells the Rust compiler about functionality a particular type
+has and can share with other types.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub struct Tweet {
+    pub username: String,
+    pub content: String,
+    pub reply: bool,
+    pub retweet: bool,
+}
+
+pub trait Summary {
+    fn summarize(&amp;self) -&gt; String;
+}
+
+impl Summary for Tweet {
+    fn summarize(&amp;self) -&gt; String {
+        format!(&quot;{}: {}&quot;, self.username, self.content)
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="default-implementations"><a class="header" href="#default-implementations">Default implementations</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub trait Summary {
+    fn summarize(&amp;self) -&gt; String {
+        String::from(&quot;(Read more...)&quot;)
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>To use a default implementation:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Summary for Tweet {}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="traits-as-parameters"><a class="header" href="#traits-as-parameters">Traits as Parameters</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn notify(item: impl Summary) {
+    println!(&quot;Breaking news! {}&quot;, item.summarize());
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="trait-bound-syntax"><a class="header" href="#trait-bound-syntax">Trait Bound syntax</a></h2>
+<p>The <code>impl Trait</code> syntax in the above example works for straightforward
+cases. It is actually a syntax sugar for a longer form which is called
+a trait bound:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn notify&lt;T: Summary&gt;(item: T) {
+    println!(&quot;Breaking news! {}&quot;, item.summarize());
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="specifying-multiple-trait-bounds-with-the--syntax"><a class="header" href="#specifying-multiple-trait-bounds-with-the--syntax">Specifying Multiple Trait Bounds with the + Syntax</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn notify(item: impl Summary + Display) {
+<span class="boring">}
+</span></code></pre></pre>
+<p>Or in the trait bound syntax form:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn notify&lt;T: Summary + Display&gt;(item: T) {
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="clearer-trait-bounds-with-where-clauses"><a class="header" href="#clearer-trait-bounds-with-where-clauses">Clearer Trait Bounds with where Clauses</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn some_function&lt;T: Display + Clone, U: Clone + Debug&gt;(t: T, u: U) -&gt; i32 {
+<span class="boring">}
+</span></code></pre></pre>
+<p>can be written as:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn some_function&lt;T, U&gt;(t: T, u: U) -&gt; i32
+    where T: Display + Clone,
+          U: Clone + Debug
+{
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="returning-types-that-implement-traits"><a class="header" href="#returning-types-that-implement-traits">Returning Types that Implement Traits</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn returns_summarizable() -&gt; impl Summary {
+    Tweet {
+        username: String::from(&quot;horse_ebooks&quot;),
+        content: String::from(&quot;of course, as you probably already know, people&quot;),
+        reply: false,
+        retweet: false,
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="validating-references-with-lifetimes"><a class="header" href="#validating-references-with-lifetimes">Validating references with Lifetimes</a></h3>
+<p>Every reference in Rust has a lifetime, which is the scope for which
+that reference is valid.</p>
+<h2 id="the-borrow-checker"><a class="header" href="#the-borrow-checker">The Borrow Checker</a></h2>
+<p>The Rust compiler has a borrow checker that compares scopes to
+determine whether all borrows are valid.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>{
+    let r;                // ---------+-- 'a
+                          //          |
+    {                     //          |
+        let x = 5;        // -+-- 'b  |
+        r = &amp;x;           //  |       |
+    }                     // -+       |
+                          //          |
+    println!(&quot;r: {}&quot;, r); //          |
+}                         // ---------+
+<span class="boring">}
+</span></code></pre></pre>
+<p>Here, we’ve annotated the lifetime of r with 'a and the lifetime of x
+with 'b. As you can see, the inner 'b block is much smaller than the
+outer 'a lifetime block. At compile time, Rust compares the size of
+the two lifetimes and sees that r has a lifetime of 'a but that it
+refers to memory with a lifetime of 'b. The program is rejected
+because 'b is shorter than 'a: the subject of the reference doesn’t
+live as long as the reference.</p>
+<h2 id="generic-lifetimes-in-functions"><a class="header" href="#generic-lifetimes-in-functions">Generic Lifetimes in Functions</a></h2>
+<p>This code will result in compile error:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn longest(x: &amp;str, y: &amp;str) -&gt; &amp;str {
+    if x.len() &gt; y.len() {
+        x
+    } else {
+        y
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The error:</p>
+<pre><code class="language-shellsession">error[E0106]: missing lifetime specifier
+ --&gt; src/main.rs:1:33
+  |
+1 | fn longest(x: &amp;str, y: &amp;str) -&gt; &amp;str {
+  |                                 ^ expected lifetime parameter
+  |
+  = help: this function's return type contains a borrowed value, but the
+signature does not say whether it is borrowed from `x` or `y`
+</code></pre>
+<p>Rust can't tell whether the reference being returned refers to <code>x</code> or
+<code>y</code>. To fix this error, we need to add generic lifetime parameters.</p>
+<h2 id="lifetime-annotation-syntax"><a class="header" href="#lifetime-annotation-syntax">Lifetime Annotation Syntax</a></h2>
+<ul>
+<li>Lifetime annotations don’t change how long any of the references live.</li>
+<li>Lifetime annotations describe the relationships of the lifetimes of
+multiple references to each other without affecting the lifetimes.</li>
+</ul>
+<p>Lifetime annotations have a slightly unusual syntax: the names of
+lifetime parameters must start with an apostrophe (') and are usually
+all lowercase and very short, like generic types. Most people use the
+name 'a. We place lifetime parameter annotations after the &amp; of a
+reference, using a space to separate the annotation from the
+reference’s type.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>&amp;i32        // a reference
+&amp;'a i32     // a reference with an explicit lifetime
+&amp;'a mut i32 // a mutable reference with an explicit lifetime
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="lifetime-annotations-in-function-signatures"><a class="header" href="#lifetime-annotations-in-function-signatures">Lifetime Annotations in Function Signatures</a></h2>
+<p>As with generic type parameters, we need to declare generic lifetime
+parameters inside angle brackets between the function name and the
+parameter list.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;'a str) -&gt; &amp;'a str {
+    if x.len() &gt; y.len() {
+        x
+    } else {
+        y
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="lifetime-annotations-in-struct-definitions"><a class="header" href="#lifetime-annotations-in-struct-definitions">Lifetime Annotations in Struct Definitions</a></h2>
+<p>So far, we’ve only defined structs to hold owned types. It’s possible
+for structs to hold references, but in that case we would need to add
+a lifetime annotation on every reference in the struct’s definition.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct ImportantExcerpt&lt;'a&gt; {
+    part: &amp;'a str,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="lifetime-elision"><a class="header" href="#lifetime-elision">Lifetime Elision</a></h2>
+<p>You’ve learned that every reference has a lifetime and that you need
+to specify lifetime parameters for functions or structs that use
+references. But there are some code which seem to compile without
+lifetime parameters:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn first_word(s: &amp;str) -&gt; &amp;str {
+    let bytes = s.as_bytes();
+
+    for (i, &amp;item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &amp;s[0..i];
+        }
+    }
+
+    &amp;s[..]
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>While the above code compiles with the recent version of Rust, it
+would have not compiled in older versions of Rust.</p>
+<p>After writing a lot of Rust code, the Rust team found that Rust
+programmers were entering the same lifetime annotations over and over
+in particular situations. These situations were predictable and
+followed a few deterministic patterns. The developers programmed these
+patterns into the compiler’s code so the borrow checker could infer
+the lifetimes in these situations and wouldn’t need explicit
+annotations.</p>
+<p>The patterns programmed into Rust’s analysis of references are called
+the lifetime elision rules.</p>
+<p>Lifetimes on function or method parameters are called <code>input lifetimes</code>,
+and lifetimes on return values are called <code>output lifetimes</code>.</p>
+<p>The compiler uses three rules to figure out what lifetimes references
+have when there aren’t explicit annotations. The first rule applies to
+input lifetimes, and the second and third rules apply to output
+lifetimes. These rules apply to fn definitions as well as impl
+blocks:</p>
+<ul>
+<li>The first rule is that each parameter that is a reference gets its
+own lifetime parameter. In other words, a function with one
+parameter gets one lifetime parameter: <code>fn foo&lt;'a&gt;(x: &amp;'a i32)</code>; a
+function with two parameters gets two separate lifetime parameters:
+<code>fn foo&lt;'a, 'b&gt;(x: &amp;'a i32, y: &amp;'b i32)</code>; and so on.</li>
+<li>The second rule is if there is exactly one input lifetime parameter,
+that lifetime is assigned to all output lifetime parameters: <code>fn foo&lt;'a&gt;(x: &amp;'a i32) -&gt; &amp;'a i32</code>.</li>
+<li>The third rule is if there are multiple input lifetime parameters,
+but one of them is <code>&amp;self</code> or <code>&amp;mut self</code> because this is a method,
+the lifetime of <code>self</code> is assigned to all output lifetime
+parameters. This third rule makes methods much nicer to read and
+write because fewer symbols are necessary.</li>
+</ul>
+<h2 id="lifetime-annotations-in-method-definitions"><a class="header" href="#lifetime-annotations-in-method-definitions">Lifetime Annotations in Method Definitions</a></h2>
+<p>When we implement methods on a struct with lifetimes, we use the same
+syntax as that of generic type parameters:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;'a&gt; ImportantExcerpt&lt;'a&gt; {
+    fn level(&amp;self) -&gt; i32 {
+        3
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The lifetime parameter declaration after <code>impl</code> and its use after the
+type name are required, but we’re not required to annotate the
+lifetime of the reference to <code>self</code> because of the first elision rule.</p>
+<p>Example where the third lifetime elision rule applies:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;'a&gt; ImportantExcerpt&lt;'a&gt; {
+    fn announce_and_return_part(&amp;self, announcement: &amp;str) -&gt; &amp;str {
+        println!(&quot;Attention please: {}&quot;, announcement);
+        self.part
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>There are two input lifetimes, so Rust applies the first lifetime
+elision rule and gives both <code>&amp;self</code> and announcement their own
+lifetimes. Then, because one of the parameters is <code>&amp;self</code>, the return
+type gets the lifetime of <code>&amp;self</code>, and all lifetimes have been
+accounted for.</p>
+<h2 id="the-static-lifetime"><a class="header" href="#the-static-lifetime">The Static Lifetime</a></h2>
+<p>One special lifetime we need to discuss is <code>'static</code>, which means that
+this reference can live for the entire duration of the program. All
+string literals have the <code>'static</code> lifetime, which we can annotate as
+follows:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s: &amp;'static str = &quot;I have a static lifetime.&quot;;
+<span class="boring">}
+</span></code></pre></pre>
+<p>The text of this string is stored directly in the program’s binary,
+which is always available. Therefore, the lifetime of all string
+literals is <code>'static.</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-11---writing-automated-tests"><a class="header" href="#chapter-11---writing-automated-tests">Chapter 11 - Writing Automated Tests</a></h1>
+<p>At its simplest, a test in Rust is a function that’s annotated with
+the <code>test</code> attribute. Attributes are metadata about pieces of Rust code:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[test]
+fn it_works() {
+    assert_eq!(2 + 2, 4);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Various helper macros useful for testing:</p>
+<ul>
+<li>assert!</li>
+<li>assert_eq!</li>
+<li>assert_ne!</li>
+</ul>
+<p>You can also add a custom message to be printed with the failure
+message as optional arguments to the <code>assert!</code>, <code>assert_eq!</code>, and
+<code>assert_ne!</code> macros. Any arguments specified after the one required
+argument to <code>assert!</code> or the two required arguments to <code>assert_eq!</code> and
+<code>assert_ne!</code> are passed along to the format! macro:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[test]
+fn greeting_contains_name() {
+    let result = greeting(&quot;Carol&quot;);
+    assert!(
+        result.contains(&quot;Carol&quot;),
+        &quot;Greeting did not contain name, value was `{}`&quot;, result
+    );
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="checking-for-panics-with-should_panic"><a class="header" href="#checking-for-panics-with-should_panic">Checking for Panics with should_panic</a></h2>
+<p>We place the <code>#[should_panic]</code> attribute after the <code>#[test]</code> attribute and
+before the test function it applies to.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[test]
+#[should_panic]
+fn greater_than_100() {
+    panic(&quot;hello&quot;);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>To make <code>should_panic</code> tests more precise, we can add an optional
+expected parameter to the <code>should_panic</code> attribute. The test harness
+will make sure that the failure message contains the provided text.</p>
+<h2 id="using-resultt-e-in-tests"><a class="header" href="#using-resultt-e-in-tests">Using Result&lt;T, E&gt; in Tests</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[test]
+fn it_works() -&gt; Result&lt;(), String&gt; {
+    if 2 + 2 == 4 {
+        Ok(())
+    } else {
+        Err(String::from(&quot;two plus two does not equal four&quot;))
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="controlling-how-tests-are-run"><a class="header" href="#controlling-how-tests-are-run">Controlling How Tests Are Run</a></h2>
+<p>The default behavior of the binary produced by <code>cargo test</code> is to run
+all the tests in parallel and capture output generated during test
+runs, preventing the output from being displayed and making it easier
+to read the output related to the test results.</p>
+<h2 id="various-test-options"><a class="header" href="#various-test-options">Various test options</a></h2>
+<ul>
+<li>When you run multiple tests, by default they run in parallel using threads.</li>
+</ul>
+<pre><code class="language-shellsession">$ cargo test -- --test-threads=1
+$ cargo test -- --nocapture
+$ cargo test -- --ignored # Runs only the ignored tests
+</code></pre>
+<h2 id="test-organization"><a class="header" href="#test-organization">Test Organization</a></h2>
+<ul>
+<li>Unit tests are small and more focused, testing one module in
+isolation at a time, and can test private interfaces.</li>
+<li>Integration tests are entirely external to your library and use your
+code in the same way any other external code would, using only the
+public interface and potentially exercising multiple modules per
+test.</li>
+</ul>
+<h3 id="unit-tests"><a class="header" href="#unit-tests">Unit tests</a></h3>
+<p>The convention is to create a module named <code>tests</code> in each file to
+contain the test functions and to annotate the module with <code>cfg(test)</code>.</p>
+<p>The <code>#[cfg(test)]</code> annotation on the tests module tells Rust to
+compile and run the test code only when you run <code>cargo test</code>, not when
+you run <code>cargo build</code>. Note that <code>cfg</code> stands for configuration.</p>
+<h3 id="integration-tests"><a class="header" href="#integration-tests">Integration Tests</a></h3>
+<p>We create a tests directory at the top level of our project directory,
+next to src. Cargo knows to look for integration test files in this
+directory.</p>
+<p>Note that we can create <code>tests/common/mod.rs</code> to put helper
+functions. Rust understands this naming convention and treats the
+<code>common</code> module not as an integration tests file.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-12"><a class="header" href="#chapter-12">Chapter 12</a></h1>
+<p>This is a I/O project and I won't be covering it here.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-13---functional-language-features-iterators-and-closures"><a class="header" href="#chapter-13---functional-language-features-iterators-and-closures">Chapter 13 - Functional Language Features: Iterators and Closures</a></h1>
+<h2 id="motivation-for-closure"><a class="header" href="#motivation-for-closure">Motivation for Closure</a></h2>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn generate_workout(intensity: u32, random_number: u32) {
+    if intensity &lt; 25 {
+        println!(
+            &quot;Today, do {} pushups!&quot;,
+            simulated_expensive_calculation(intensity)
+        );
+        println!(
+            &quot;Next, do {} situps!&quot;,
+            simulated_expensive_calculation(intensity)
+        );
+    } else {
+        if random_number == 3 {
+            println!(&quot;Take a break today! Remember to stay hydrated!&quot;);
+        } else {
+            println!(
+                &quot;Today, run for {} minutes!&quot;,
+                simulated_expensive_calculation(intensity)
+            );
+        }
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Cons: In the above function, you call <code>simulated_expensive_calculation</code>
+twice in the first if block. Let's improve it:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn generate_workout(intensity: u32, random_number: u32) {
+    let expensive_result =
+        simulated_expensive_calculation(intensity);
+
+    if intensity &lt; 25 {
+        println!(
+            &quot;Today, do {} pushups!&quot;,
+            expensive_result
+        );
+        println!(
+            &quot;Next, do {} situps!&quot;,
+            expensive_result
+        );
+    } else {
+        if random_number == 3 {
+            println!(&quot;Take a break today! Remember to stay hydrated!&quot;);
+        } else {
+            println!(
+                &quot;Today, run for {} minutes!&quot;,
+                expensive_result
+            );
+        }
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>In the above implementation, the expensive computation is computed
+only once. Unfortantely for cases where <code>intensity &gt;= 25 &amp;&amp; random_number == 3</code>, we have to perform the expensive computation
+although it isn't required. Let's use closures here.</p>
+<p>To define a closure, we start with a pair of vertical pipes (<code>|</code>),
+inside which we specify the parameters to the closure:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn generate_workout(intensity: u32, random_number: u32) {
+    let expensive_closure = |num| {
+        println!(&quot;calculating slowly...&quot;);
+        thread::sleep(Duration::from_secs(2));
+        num
+    };
+
+    if intensity &lt; 25 {
+        println!(
+            &quot;Today, do {} pushups!&quot;,
+            expensive_closure(intensity)
+        );
+        println!(
+            &quot;Next, do {} situps!&quot;,
+            expensive_closure(intensity)
+        );
+    } else {
+        if random_number == 3 {
+            println!(&quot;Take a break today! Remember to stay hydrated!&quot;);
+        } else {
+            println!(
+                &quot;Today, run for {} minutes!&quot;,
+                expensive_closure(intensity)
+            );
+        }
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>However the above implementation has the same problem of the first
+variant. We could fix this problem by creating a variable local to
+that if block to hold the result of calling the closure, but closures
+provide us with another solution. Let's learn something more before
+finding out solution to the above problem.</p>
+<h2 id="closure-type-inference-and-annotation"><a class="header" href="#closure-type-inference-and-annotation">Closure Type Inference and Annotation</a></h2>
+<p>Closures don’t require you to annotate the types of the parameters or
+the return value like <code>fn</code> functions do. But we can add type
+annotations if we want to increase explicitness and clarity at the
+cost of being more verbose than is strictly necessary.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let expensive_closure = |num: u32| -&gt; u32 {
+    println!(&quot;calculating slowly...&quot;);
+    thread::sleep(Duration::from_secs(2));
+    num
+};
+<span class="boring">}
+</span></code></pre></pre>
+<p>Closure definitions will have one concrete type inferred for each of
+their parameters and for their return value. The following code won't
+compile:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let example_closure = |x| x;
+
+let s = example_closure(String::from(&quot;hello&quot;));
+let n = example_closure(5);
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="storing-closures-using-generic-parameters-and-the-fn-traits"><a class="header" href="#storing-closures-using-generic-parameters-and-the-fn-traits">Storing Closures Using Generic Parameters and the <code>Fn</code> Traits</a></h2>
+<p>One solution to the above function <code>generate_workout</code> is to save the
+result of the expensive closure in a variable for reuse and use the
+variable in each place we need the result.</p>
+<p>To make a struct that holds a closure, we need to specify the type of
+the closure, because a struct definition needs to know the types of
+each of its fields. Each closure instance has its own unique anonymous
+type: that is, even if two closures have the same signature, their
+types are still considered different.</p>
+<p>The <code>Fn</code> traits are provided by the standard library. All closures
+implement at least one of the traits: <code>Fn</code>, <code>FnMut</code>, or <code>FnOnce</code>.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Cacher&lt;T&gt;
+    where T: Fn(u32) -&gt; u32
+{
+    calculation: T,
+    value: Option&lt;u32&gt;,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The <code>Cacher</code> struct has a <code>calculation</code> field of the generic type <code>T</code>. The
+trait bounds on T specify that it’s a closure by using the Fn
+trait. Any closure we want to store in the <code>calculation</code> field must have
+one <code>u32</code> parameter (specified within the parentheses after <code>Fn</code>) and must
+return a <code>u32</code> (specified after the <code>-&gt;</code>).</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T&gt; Cacher&lt;T&gt;
+    where T: Fn(u32) -&gt; u32
+{
+    fn new(calculation: T) -&gt; Cacher&lt;T&gt; {
+        Cacher {
+            calculation,
+            value: None,
+        }
+    }
+
+    fn value(&amp;mut self, arg: u32) -&gt; u32 {
+        match self.value {
+            Some(v) =&gt; v,
+            None =&gt; {
+                let v = (self.calculation)(arg);
+                self.value = Some(v);
+                v
+            },
+        }
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>And now the implementation:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn generate_workout(intensity: u32, random_number: u32) {
+    let mut expensive_result = Cacher::new(|num| {
+        println!(&quot;calculating slowly...&quot;);
+        thread::sleep(Duration::from_secs(2));
+        num
+    });
+
+    if intensity &lt; 25 {
+        println!(
+            &quot;Today, do {} pushups!&quot;,
+            expensive_result.value(intensity)
+        );
+        println!(
+            &quot;Next, do {} situps!&quot;,
+            expensive_result.value(intensity)
+        );
+    } else {
+        if random_number == 3 {
+            println!(&quot;Take a break today! Remember to stay hydrated!&quot;);
+        } else {
+            println!(
+                &quot;Today, run for {} minutes!&quot;,
+                expensive_result.value(intensity)
+            );
+        }
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The above implementation doesn't suffer from any of the above cons
+discussed above. The function is computed only once when required.</p>
+<p>But there is a problem with the above implementation. The code will
+fail (obviously) for this scenario:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[test]
+fn call_with_different_values() {
+    let mut c = Cacher::new(|a| a);
+
+    let v1 = c.value(1);
+    let v2 = c.value(2);
+
+    assert_eq!(v2, 2);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>This problem can be fixed by changing the struct implementation to
+store the key and value mapping in a hashmap.</p>
+<h2 id="capturing-the-environment-with-closures"><a class="header" href="#capturing-the-environment-with-closures">Capturing the Environment with Closures</a></h2>
+<p>In the above example, we used closures as inline anonymous
+functions. We can also use it to capture their environment and access
+variables from the scope in which they're defined.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = 4;
+
+    let equal_to_x = |z| z == x;
+
+    let y = 4;
+
+    assert!(equal_to_x(y));
+}
+</code></pre></pre>
+<p>whereas something like this will result in an compile error:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = 4;
+
+    fn equal_to_x(z: i32) -&gt; bool { z == x }
+
+    let y = 4;
+
+    assert!(equal_to_x(y));
+}
+</code></pre></pre>
+<p>Closures can capture values from their environment in three ways,
+which directly map to the three ways a function can take a parameter:
+taking ownership, borrowing mutably, and borrowing immutably. These
+are encoded in the three <code>Fn</code> traits as follows:</p>
+<ul>
+<li><code>FnOnce</code> consumes the variables it captures from its enclosing scope,
+known as the closure’s environment. To consume the captured
+variables, the closure must take ownership of these variables and
+move them into the closure when it is defined. The <code>Once</code> part of the
+name represents the fact that the closure can’t take ownership of
+the same variables more than once, so it can be called only once.</li>
+<li><code>FnMut</code> can change the environment because it mutably borrows values.</li>
+<li><code>Fn</code> borrows values from the environment immutably.</li>
+</ul>
+<p>When you create a closure, Rust infers which trait to use based on how
+the closure uses the values from the environment. All closures
+implement <code>FnOnce</code> because they can all be called <code>at least</code>
+once. Closures that don’t move the captured variables also implement
+<code>FnMut</code>, and closures that don’t need mutable access to the captured
+variables also implement <code>Fn</code>.</p>
+<p><a href="https://www.reddit.com/r/rust/comments/2s7l0m/whats_the_usecase_for_fnonce/">Reddit thread on usecase of FnOnce</a></p>
+<p>If you want to force the closure to take ownership of the values it
+uses in the environment, you can use the <code>move</code> keyword before the
+parameter list. This technique is mostly useful when passing a closure
+to a new thread to move the data so it’s owned by the new
+thread. Example:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let x = vec![1, 2, 3];
+
+    let equal_to_x = move |z| z == x;
+
+    println!(&quot;can't use x here: {:?}&quot;, x);
+
+    let y = vec![1, 2, 3];
+
+    assert!(equal_to_x(y));
+}
+</code></pre></pre>
+<p>The above program will result in compile error till you have the
+printlin statement in the code.</p>
+<h2 id="iterators"><a class="header" href="#iterators">Iterators</a></h2>
+<ul>
+<li><a href="https://stackoverflow.com/a/32310313/1651941">Understand this answer - self, Self</a></li>
+<li><a href="https://doc.rust-lang.org/std/iter/trait.Iterator.html">Iterator crate link</a></li>
+<li><a href="https://doc.rust-lang.org/std/iter/index.html">std::iter documentation</a></li>
+</ul>
+<p>Three forms of iteration:</p>
+<ul>
+<li><code>iter()</code> iterates over <code>&amp;T</code></li>
+</ul>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let v1 = vec![1, 2, 3];
+
+    let v1_iter = v1.iter();
+    println!(&quot;{:?}&quot;, v1);
+    for v in v1_iter {
+        println!(&quot;Got {}&quot;, v);
+    }
+    println!(&quot;{:?}&quot;, v1);
+}
+</code></pre></pre>
+<ul>
+<li><code>iter_mut</code> iterates over <code>&amp;mut T</code></li>
+</ul>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let mut v1 = vec![1, 2, 3];
+
+    let v1_iter: std::slice::IterMut&lt;u8&gt; = v1.iter_mut();
+    for v in v1_iter {
+        *v = *v + 2;
+        println!(&quot;Got {}&quot;, v);
+    }
+    // println!(&quot;{:?}&quot;, v1); Uncommenting this results in compile error
+}
+</code></pre></pre>
+<p>The above results in a compile error because mutable references have
+one big restriction: you can have only one mutable reference to a
+particular piece of data in a particular scope. And in the above code,
+<code>v1</code>'s mutable borrow has already happened and <code>v1_iter</code> has mutable
+reference to that in the scope. When you try to print it, you try to
+immutably borrow - but the mixing isn't permitted. So, you can
+overcome that like this:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let mut v1 = vec![1, 2, 3];
+
+    {
+        let v1_iter: std::slice::IterMut&lt;u8&gt; = v1.iter_mut();
+        for v in v1_iter {
+            *v = *v + 2;
+            println!(&quot;Got {}&quot;, v);
+        }
+    }
+    println!(&quot;{:?}&quot;, v1);
+}
+</code></pre></pre>
+<p>Note that even this will work as after the for loop ends, the scope of the borrow ends:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let mut v1 = vec![1, 2, 3];
+
+    for v in v1.iter_mut() {
+        *v = *v + 2;
+        println!(&quot;Got {}&quot;, v);
+    }
+    println!(&quot;{:?}&quot;, v1);
+}
+</code></pre></pre>
+<ul>
+<li><code>into_iter()</code> iterates over <code>T</code></li>
+</ul>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let v1 = vec![1, 2, 3];
+
+    let v1_iter: std::vec::IntoIter&lt;u8&gt; = v1.into_iter();
+    for v in v1_iter {
+        println!(&quot;Got {}&quot;, v);
+    }
+    // println!(&quot;{:?}&quot;, v1); Uncommenting this results in compile error
+}
+</code></pre></pre>
+<p>Note that if you restructure it like this, it still won't compile (the reason being <code>v1</code> is borrowed):</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let v1 = vec![1, 2, 3];
+    {
+        let v1_iter: std::vec::IntoIter&lt;u8&gt; = v1.into_iter();
+        for v in v1_iter {
+            println!(&quot;Got {}&quot;, v);
+        }
+    }
+    println!(&quot;{:?}&quot;, v1);
+}
+</code></pre></pre>
+<h2 id="other-examples"><a class="header" href="#other-examples">Other Examples</a></h2>
+<ul>
+<li><code>collect</code> function transforms an iterator into a collection.</li>
+<li><a href="https://doc.rust-lang.org/core/iter/trait.Iterator.html#method.map">map function</a></li>
+<li><a href="https://doc.rust-lang.org/core/iter/trait.Iterator.html#method.filter">filter function</a></li>
+<li><a href="https://stackoverflow.com/q/57321971/1651941">SO question</a></li>
+</ul>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let v1: [i32; 3] = [1, 2, 3];
+    let v2: Vec&lt;i32&gt; = v1.iter().map(|x| x * 2).collect();
+    let v3: Vec&lt;&amp;i32&gt; = v1.iter().filter(|x| **x == 1).collect();
+    println!(&quot;{:?}&quot;, v1);
+    println!(&quot;{:?}&quot;, v2);
+    println!(&quot;{:?}&quot;, v3);
+}
+</code></pre></pre>
+<p>Why does v3 is annotated with <code>Vec&lt;&amp;i32&gt;</code> and not <code>Vec&lt;i32&gt;</code> and why
+does it has <code>**</code> ?</p>
+<p>In <code>v3</code>, we do <code>vi.iter()</code> which passes <code>&amp;i32</code> into filter. But the
+type of predicate in filter is <code>FnMut(&amp;Self::Item) -&gt; Bool</code>. So the
+type of x becomes <code>&amp;&amp;i32</code>. So, you do two de-references to get the
+value. That answers the second part of the question. The type is
+<code>Vec&lt;i32&gt;</code> as the type of predicate for map is <code>FnMut(Self::Item) -&gt; B</code> whereas for filter it is <code>FnMut(&amp;Self::Item -&gt; Bool)</code>. And hence
+the different type signature.</p>
+<p>Different map variants:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let mut v1: Vec&lt;i32&gt; = vec![1, 2, 3];
+    let v2: Vec&lt;i32&gt; = v1.iter().map(|x| x * 2).collect();
+    let v3: Vec&lt;i32&gt; = v1.iter_mut().map(|x| *x * 2).collect();
+    let v4: Vec&lt;()&gt; = v1.iter_mut().map(|x| *x = *x * 2).collect();
+    let v5: Vec&lt;&amp;mut i32&gt; = v1
+        .iter_mut()
+        .map(|x| {
+            *x = *x * 2;
+            x
+        }).collect();
+
+    // println!(&quot;{:?}&quot;, v1); Uncommenting this will result in an compile error
+    println!(&quot;{:?}&quot;, v2);
+    println!(&quot;{:?}&quot;, v3);
+    println!(&quot;{:?}&quot;, v4);
+    println!(&quot;{:?}&quot;, v5);
+}
+</code></pre></pre>
+<p>Note that <code>v4</code> style is not recommened. Uncommenting the line will
+result in compile error because <code>v5</code> has a mutuable borrow on <code>v1</code>.</p>
+<p>Different filter variations:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let v1: Vec&lt;i32&gt; = vec![1, 2, 3];
+let v2: Vec&lt;i32&gt; = v1.into_iter().filter(|x| *x == 2).collect();
+println!(&quot;{:?}&quot;, v2);
+<span class="boring">}
+</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let v1: Vec&lt;i32&gt; = vec![1, 2, 3];
+let v2: Vec&lt;&amp;i32&gt; = v1.iter().filter(|&amp;x| *x == 2).collect();
+println!(&quot;{:?}&quot;, v2);
+<span class="boring">}
+</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut v1: Vec&lt;i32&gt; = vec![1, 2, 3];
+let v2: Vec&lt;&amp;mut i32&gt; = v1.iter_mut().filter(|x| **x == 2).collect();
+println!(&quot;{:?}&quot;, v2);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Note that there are two styles of coding: iterator and loops. Most
+rust programmers prefer iterator style. Also, there is no much
+performance difference between both of them.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-14---more-about-cargo-and-cratesio"><a class="header" href="#chapter-14---more-about-cargo-and-cratesio">Chapter 14 - More about Cargo and Crates.io</a></h1>
+<h2 id="customizing-builds-with-release-profiles"><a class="header" href="#customizing-builds-with-release-profiles">Customizing Builds with Release Profiles</a></h2>
+<ul>
+<li>In Rust, release profiles are predefined and customizable profiles
+with different configurations that allow a programmer to have more
+control over various options for compiling code. Each profile is
+configured independently of the others.</li>
+<li>Cargo has two main profiles:
+<ul>
+<li><code>dev</code> profile: Used when you run <code>cargo build</code></li>
+<li><code>release</code> profile: Used when you run <code>cargo build --release</code></li>
+</ul>
+</li>
+</ul>
+<p>You can also override the optimization level via <code>cargo.toml</code> file:</p>
+<pre><code class="language-toml">[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+</code></pre>
+<h2 id="documentation-comment"><a class="header" href="#documentation-comment">Documentation comment</a></h2>
+<p>Documentation comments use three slashes, <code>///</code>, instead of two and
+support Markdown notation for formatting the text. Place documentation
+comments just before the item they’re documenting.</p>
+<p>We can generate documentation through <code>cargo doc</code> which uses <code>rustdoc</code>
+to genrate HTML documentation.</p>
+<p>Documentation comments have an additional bonus that they will be run
+by <code>cargo test</code>.</p>
+<p>Another style of doc comment, <code>//!</code>, adds documentation to the item that
+contains the comments rather than adding documentation to the items
+following the comments.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>//! # My Crate
+//!
+//! `my_crate` is a collection of utilities to make performing certain
+//! calculations more convenient.
+
+/// Adds one to the number given.
+///
+/// # Examples
+///
+/// ```
+/// let arg = 5;
+/// let answer = my_crate::add_one(arg);
+///
+/// assert_eq!(6, answer);
+/// ```
+pub fn add_one(x: i32) -&gt; i32 {
+    x + 1
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="publishing-package"><a class="header" href="#publishing-package">Publishing package</a></h2>
+<ul>
+<li>Create a account in <a href="https://crates.io/">crates.io</a></li>
+<li>cargo publish</li>
+</ul>
+<h2 id="yank"><a class="header" href="#yank">Yank</a></h2>
+<p>Yanking a version prevents new projects from starting to depend on
+that version while allowing all existing projects that depend on it to
+continue to download and depend on that version. Essentially, a yank
+means that all projects with a Cargo.lock will not break, and any
+future Cargo.lock files generated will not use the yanked version.</p>
+<pre><code class="language-shellsession">$ cargo yank --vers 1.0.1
+</code></pre>
+<h2 id="cargo-workspaces"><a class="header" href="#cargo-workspaces">Cargo Workspaces</a></h2>
+<p>Cargo offers a feature called workspaces that can help manage multiple
+related packages that are developed in tandem.</p>
+<p>Example workspace project we will be creating: Two libraries and one
+binary. Code structure:</p>
+<pre><code class="language-shellsession">├── Cargo.lock
+├── Cargo.toml
+├── add-one
+│   ├── Cargo.toml
+│   └── src
+│       └── lib.rs
+├── adder
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+└── target
+</code></pre>
+<p>The root level <code>cargo.toml</code> will have this:</p>
+<pre><code class="language-toml">[workspace]
+
+members = [
+    &quot;adder&quot;,
+    &quot;add-one&quot;,
+]
+</code></pre>
+<p>The <code>adder/cargo.toml</code> will contain this:</p>
+<pre><code class="language-toml">[dependencies]
+
+add-one = { path = &quot;../add-one&quot; }
+</code></pre>
+<h2 id="cargo-install"><a class="header" href="#cargo-install">cargo install</a></h2>
+<p>The <code>cargo install</code> command allows you to install and use binary
+crates locally.</p>
+<h2 id="custom-cargo-commands"><a class="header" href="#custom-cargo-commands">Custom cargo commands</a></h2>
+<p>If a binary in your <code>$PATH</code> is named <code>cargo-something</code>, you can run it as
+if it was a Cargo subcommand by running <code>cargo something</code>.</p>
+<p>You can also use <code>cargo --list</code> to find out all the sub commands
+(including custom ones).</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-15---smart-pointers"><a class="header" href="#chapter-15---smart-pointers">Chapter 15 - Smart Pointers</a></h1>
+<ul>
+<li>A pointer is a general concept for a variable that contains an address
+in memory. This address refers to, or “points at,” some other data.</li>
+<li>Smart pointers, on the other hand, are data structures that not only
+act like a pointer but also have additional metadata and
+capabilities.</li>
+<li>Some examples of smart pointers:
+<ul>
+<li>Reference counting smart pointer</li>
+<li>String (metadata is capactiy and ensure that it is valid UTF-8)</li>
+<li>Vec<T></li>
+</ul>
+</li>
+</ul>
+<p>Smart pointers are usually implemented using structs. The
+characteristic that distinguishes a smart pointer from an ordinary
+struct is that smart pointers implement the <code>Deref</code> and <code>Drop</code> traits.</p>
+<h2 id="box"><a class="header" href="#box">Box<T></a></h2>
+<ul>
+<li>Boxes allow you to store data on the heap rather than the
+stack. What remains on the stack is the pointer to the heap data.</li>
+</ul>
+<p>Usecase of Boxes:</p>
+<ul>
+<li>When you have a type whose size can’t be known at compile time.</li>
+<li>When you have a large amount of data and you want to transfer
+ownership but ensure the data won’t be copied when you do so</li>
+<li>When you want to own a value and you care only that it’s a type that
+implements a particular trait rather than being of a specific type</li>
+</ul>
+<h2 id="enabling-recursive-types-with-boxes"><a class="header" href="#enabling-recursive-types-with-boxes">Enabling recursive types with Boxes</a></h2>
+<pre><pre class="playground"><code class="language-rust">enum List {
+    Cons(i32, Box&lt;List&gt;),
+    Nil,
+}
+
+use crate::List::{Cons, Nil};
+
+fn main() {
+    let list = Cons(1,
+        Box::new(Cons(2,
+            Box::new(Cons(3,
+                Box::new(Nil))))));
+}
+</code></pre></pre>
+<h2 id="deref-trait"><a class="header" href="#deref-trait">Deref Trait</a></h2>
+<p>This program doesn't compile:</p>
+<pre><pre class="playground"><code class="language-rust">struct MyBox&lt;T&gt;(T);
+
+impl&lt;T&gt; MyBox&lt;T&gt; {
+    fn new(x: T) -&gt; MyBox&lt;T&gt; {
+        MyBox(x)
+    }
+}
+
+fn main() {
+    let x = 5;
+    let y = MyBox::new(x);
+
+    assert_eq!(5, x);
+    assert_eq!(5, *y); // The line which causes compile errors
+}
+</code></pre></pre>
+<p>This is the change required to make it compile:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::ops::Deref;
+
+impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
+    type Target = T;
+
+    fn deref(&amp;self) -&gt; &amp;T {
+        &amp;self.0
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="implicit-deref-coercions-with-functions-and-methods"><a class="header" href="#implicit-deref-coercions-with-functions-and-methods">Implicit Deref Coercions with Functions and Methods</a></h2>
+<p>Deref coercion converts a reference to a type that implements <code>Deref</code>
+into a reference to a type that <code>Deref</code> can convert the original type
+into.</p>
+<p>Deref coercion is a convenience that Rust performs on arguments to
+functions and methods.</p>
+<p>With deref coercion, a program like this will compile successfully:</p>
+<pre><pre class="playground"><code class="language-rust">fn hello(name: &amp;str) {
+    println!(&quot;Hello, {}!&quot;, name);
+}
+
+fn main() {
+    let m = MyBox::new(String::from(&quot;Rust&quot;));
+    hello(&amp;m);
+}
+</code></pre></pre>
+<p>If you didn't have deref coercion, you have to write the above code
+like this:</p>
+<pre><pre class="playground"><code class="language-rust">fn hello(name: &amp;str) {
+    println!(&quot;Hello, {}!&quot;, name);
+}
+
+fn main() {
+    let m = MyBox::new(String::from(&quot;Rust&quot;));
+    hello(&amp;(*m)[..]);
+}
+</code></pre></pre>
+<h2 id="deref-coercion-and-mutability"><a class="header" href="#deref-coercion-and-mutability">Deref Coercion and Mutability</a></h2>
+<p>Similar to how you use the <code>Deref</code> trait to override the * operator on
+immutable references, you can use the <code>DerefMut</code> trait to override the *
+operator on mutable references.</p>
+<p>Rust does deref coercion when it finds types and trait implementations
+in three cases:</p>
+<ul>
+<li>From <code>&amp;T</code> to <code>&amp;U</code> when <code>T: Deref&lt;Target=U&gt;</code></li>
+<li>From <code>&amp;mut T</code> to <code>&amp;mut U</code> when <code>T: DerefMut&lt;Target=U&gt;</code></li>
+<li>From <code>&amp;mut T</code> to <code>&amp;U</code> when <code>T: Deref&lt;Target=U&gt;</code></li>
+</ul>
+<p>The first two cases are the same except for mutability. In the third
+one, Rust will also coerce a mutable reference to an immutable
+one. But note that reverse is not possible.</p>
+<h2 id="drop-trait"><a class="header" href="#drop-trait">Drop trait</a></h2>
+<p>You can provide an implementation for the <code>Drop</code> trait on any type, and
+the code you specify can be used to release resources like files or
+network connections.</p>
+<p><code>Box&lt;T&gt;</code> customizes <code>Drop</code> to deallocate the space on the heap that
+the box points to.</p>
+<p>Example implementation:</p>
+<pre><pre class="playground"><code class="language-rust">struct CustomSmartPointer {
+    data: String,
+}
+
+impl Drop for CustomSmartPointer {
+    fn drop(&amp;mut self) {
+        println!(&quot;Dropping CustomSmartPointer with data `{}`!&quot;, self.data);
+    }
+}
+
+fn main() {
+    let c = CustomSmartPointer { data: String::from(&quot;my stuff&quot;) };
+    let d = CustomSmartPointer { data: String::from(&quot;other stuff&quot;) };
+    println!(&quot;CustomSmartPointers created.&quot;);
+}
+</code></pre></pre>
+<p>You can also drop a value early by using <code>std::mem::drop</code>.</p>
+<h2 id="rc-the-reference-counted-smart-pointer"><a class="header" href="#rc-the-reference-counted-smart-pointer">Rc<T>, the Reference counted Smart Pointer</a></h2>
+<p>In the majority of cases, ownership is clear: you know exactly which
+variable owns a given value. However, there are cases when a single
+value might have multiple owners. To enable multiple ownership, Rust
+has a type called <code>Rc&lt;T&gt;</code>.</p>
+<p>The type <code>Rc&lt;T&gt;</code> provides shared ownership of a value of type T,
+allocated in the heap. Invoking <code>clone</code> on <code>Rc</code> produces a new pointer to
+the same value in the heap.</p>
+<p><code>Rc</code> uses non-atomic reference counting. This means that overhead is
+very low, but an <code>Rc</code> cannot be sent between threads.</p>
+<p>Example code:</p>
+<pre><pre class="playground"><code class="language-rust">enum List {
+    Cons(i32, Rc&lt;List&gt;),
+    Nil,
+}
+
+use crate::List::{Cons, Nil};
+use std::rc::Rc;
+
+fn main() {
+    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    let b = Cons(3, Rc::clone(&amp;a));
+    let c = Cons(4, Rc::clone(&amp;a));
+}
+</code></pre></pre>
+<h2 id="refcell-and-interior-mutability"><a class="header" href="#refcell-and-interior-mutability">RefCell<T> and Interior mutability</a></h2>
+<ul>
+<li><a href="https://www.reddit.com/r/rust/comments/755a5x/i_have_finally_understood_what_cell_and_refcell/">Reddit summary on Cell and RefCell</a></li>
+<li>RefCell is a mutable memory location with dynamically checked borrow rules.</li>
+<li>Mutating the value inside an immutable value is the interior mutability pattern.</li>
+</ul>
+<p>Let's actually check if it has dynamically checked borrow rules. In
+Rust, that means a single variable cannot have two owners. Let's check it with <code>RefCell</code>:</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    println!(&quot;{:?}&quot;, c);
+    let b = c.into_inner();
+    println!(&quot;{:?}&quot;, b);
+}
+</code></pre></pre>
+<p>The above program works fine. But you can introduce a compile error like this:</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    println!(&quot;{:?}&quot;, c);
+    let b = c.into_inner();
+    println!(&quot;{:?}&quot;, b);
+    println!(&quot;{:?}&quot;, c); // offending line
+}
+</code></pre></pre>
+<p>or like this:</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    println!(&quot;{:?}&quot;, c);
+    let b = c.into_inner();
+    println!(&quot;{:?}&quot;, b);
+    let b = c.into_inner(); // offending line
+}
+</code></pre></pre>
+<p>But both the above are compile errors. What does it mean by
+dynamically checked ? Let's see an example of mixing mutable and
+immutable reference.</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    {
+        let mut b = c.borrow_mut();
+        *b = 6;
+        *b = 7;
+    }
+    println!(&quot;{:?}&quot;, c); // prints 7
+}
+</code></pre></pre>
+<p>The above problem works fine. But let's have two mutable reference at
+once:</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    {
+        let mut b = c.borrow_mut();
+        *b = 6;
+        *b = 7;
+        let mut d = c.borrow_mut();
+        *d = 8;
+    }
+    println!(&quot;{:?}&quot;, c);
+}
+</code></pre></pre>
+<pre><code class="language-shellsession">$ ./rust4
+thread 'main' panicked at 'already borrowed: BorrowMutError', src/libcore/result.rs:1084:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace.
+</code></pre>
+<p>Now that causes panic as expected. Another way to cause panic is to
+mix mutable and immutable reference. Let's do that:</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    {
+        let mut b = c.borrow_mut();
+        *b = 6;
+        *b = 7;
+        let d = c.borrow();
+        println!(&quot;{:?}&quot;, d);
+    }
+    println!(&quot;{:?}&quot;, c);
+}
+</code></pre></pre>
+<p>And bam, even that crashes at runtime.</p>
+<p><a href="https://stackoverflow.com/questions/36413364/as-i-can-make-the-vector-is-mutable-inside-struct">Sample usecase of RefCell<T></a></p>
+<h2 id="combining-rc-and-refcell"><a class="header" href="#combining-rc-and-refcell">Combining Rc<T> and RefCell<T></a></h2>
+<p>A common way to use RefCell<T> is in combination with Rc<T>. Recall
+that Rc<T> lets you have multiple owners of some data, but it only
+gives immutable access to that data. If you have an Rc<T> that holds a
+RefCell<T>, you can get a value that can have multiple owners and that
+you can mutate!</p>
+<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+enum List {
+    Cons(Rc&lt;RefCell&lt;i32&gt;&gt;, Rc&lt;List&gt;),
+    Nil,
+}
+
+use crate::List::{Cons, Nil};
+use std::rc::Rc;
+use std::cell::RefCell;
+
+fn main() {
+    let value = Rc::new(RefCell::new(5));
+
+    let a = Rc::new(Cons(Rc::clone(&amp;value), Rc::new(Nil)));
+
+    let b = Cons(Rc::new(RefCell::new(6)), Rc::clone(&amp;a));
+    let c = Cons(Rc::new(RefCell::new(10)), Rc::clone(&amp;a));
+
+    *value.borrow_mut() += 10;
+
+    println!(&quot;a after = {:?}&quot;, a);
+    println!(&quot;b after = {:?}&quot;, b);
+    println!(&quot;c after = {:?}&quot;, c);
+}
+</code></pre></pre>
+<h2 id="reference-cycle-example"><a class="header" href="#reference-cycle-example">Reference cycle example</a></h2>
+<pre><pre class="playground"><code class="language-rust">use std::rc::Rc;
+use std::cell::RefCell;
+use crate::List::{Cons, Nil};
+
+#[derive(Debug)]
+enum List {
+    Cons(i32, RefCell&lt;Rc&lt;List&gt;&gt;),
+    Nil,
+}
+
+impl List {
+    fn tail(&amp;self) -&gt; Option&lt;&amp;RefCell&lt;Rc&lt;List&gt;&gt;&gt; {
+        match self {
+            Cons(_, item) =&gt; Some(item),
+            Nil =&gt; None,
+        }
+    }
+}
+
+fn main() {
+    let a = Rc::new(Cons(5, RefCell::new(Rc::new(Nil))));
+
+    println!(&quot;a initial rc count = {}&quot;, Rc::strong_count(&amp;a));
+    println!(&quot;a next item = {:?}&quot;, a.tail());
+
+    let b = Rc::new(Cons(10, RefCell::new(Rc::clone(&amp;a))));
+
+    println!(&quot;a rc count after b creation = {}&quot;, Rc::strong_count(&amp;a));
+    println!(&quot;b initial rc count = {}&quot;, Rc::strong_count(&amp;b));
+    println!(&quot;b next item = {:?}&quot;, b.tail());
+
+    if let Some(link) = a.tail() {
+        *link.borrow_mut() = Rc::clone(&amp;b);
+    }
+
+    println!(&quot;b rc count after changing a = {}&quot;, Rc::strong_count(&amp;b));
+    println!(&quot;a rc count after changing a = {}&quot;, Rc::strong_count(&amp;a));
+
+    // Uncomment the next line to see that we have a cycle;
+    // it will overflow the stack
+    // println!(&quot;a next item = {:?}&quot;, a.tail());
+}
+</code></pre></pre>
+<p>The reference cycle happens because of this:</p>
+<pre><code>a = 5, Nil
+b = 10, a
+</code></pre>
+<p>Now after the initialization <code>let Some(link) = a.tail()</code>, the above
+structure changes into this:</p>
+<pre><code>a = 5, b
+b = 10, a
+</code></pre>
+<h2 id="weak"><a class="header" href="#weak">Weak</a></h2>
+<p>Weak is a version of <code>Rc</code> that holds a non-owning reference to the
+managed value. The value is accessed by calling <code>upgrade</code> on the <code>Weak</code>
+pointer, which returns an <code>Option&lt;Rc&lt;T&gt;&gt;</code>.</p>
+<p>Some experiments:</p>
+<p>use std::rc::Rc;</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let c = Rc::new(5);
+    println!(&quot;{}&quot;, Rc::strong_count(&amp;c)); // 1
+    let f = Rc::clone(&amp;c);
+    println!(&quot;{}&quot;, Rc::strong_count(&amp;c)); // 2
+    println!(&quot;{}&quot;, Rc::weak_count(&amp;c));   // 0
+    let weak_f = Rc::downgrade(&amp;c);
+    println!(&quot;{}&quot;, Rc::strong_count(&amp;c)); // 2
+    println!(&quot;{}&quot;, Rc::weak_count(&amp;c));   // 1
+}
+</code></pre></pre>
+<p>Usecase for Weak:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Node {
+    value: i32,
+    parent: RefCell&lt;Weak&lt;Node&gt;&gt;,
+    children: RefCell&lt;Vec&lt;Rc&lt;Node&gt;&gt;&gt;,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>A node will be able to refer to its parent node but doesn’t own its parent.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-16---fearless-concurrency"><a class="header" href="#chapter-16---fearless-concurrency">Chapter 16 - Fearless Concurrency</a></h1>
+<p>Problems writing multithreaded code:</p>
+<ul>
+<li>Race conditions, where threads are accessing data or resources in an
+inconsistent order</li>
+<li>Deadlocks, where two threads are waiting for each other to finish
+using a resource the other thread has, preventing both threads from
+continuing</li>
+</ul>
+<p>This model where a language calls the operating system APIs to create
+threads is sometimes called 1:1, meaning one operating system thread
+per one language thread.</p>
+<p>Programming language-provided threads are known as green threads, and
+languages that use these green threads will execute them in the
+context of a different number of operating system threads. For this
+reason, the green-threaded model is called the M:N model: there are M
+green threads per N operating system threads, where M and N are not
+necessarily the same number.</p>
+<p>Rust standard library only provides an implementation of 1:1
+threading. But there are various libraries which provides M:N model.</p>
+<h2 id="thread-primitives"><a class="header" href="#thread-primitives">Thread Primitives</a></h2>
+<ul>
+<li>spawn</li>
+<li>join</li>
+</ul>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let handle = thread::spawn(|| {
+        for i in 1..10 {
+            println!(&quot;hi number {} from the spawned thread!&quot;, i);
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    for i in 1..5 {
+        println!(&quot;hi number {} from the main thread!&quot;, i);
+        thread::sleep(Duration::from_millis(1));
+    }
+
+    handle.join().unwrap();
+}
+</code></pre></pre>
+<p>You will use the <code>move</code> keyword to make the closure take ownership of
+the values in threads:</p>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(move || {
+        println!(&quot;Here's a vector: {:?}&quot;, v);
+    });
+
+    handle.join().unwrap();
+}
+</code></pre></pre>
+<p>The above code won't work without using <code>move</code> as you can very well
+write invalid code like this:</p>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+
+fn main() {
+    let v = vec![1, 2, 3];
+
+    let handle = thread::spawn(|| {
+        println!(&quot;Here's a vector: {:?}&quot;, v);
+    });
+
+    drop(v); // oh no!
+
+    handle.join().unwrap();
+}
+</code></pre></pre>
+<h2 id="message-passing-between-threads"><a class="header" href="#message-passing-between-threads">Message passing between Threads</a></h2>
+<p>One major tool Rust has for accomplishing message-sending concurrency
+is the <code>channel</code>.</p>
+<p>A channel in programming has two halves: a transmitter and a
+receiver. One part of your code calls methods on the transmitter with
+the data you want to send, and another part checks the receiving end
+for arriving messages. A channel is said to be closed if either the
+transmitter or receiver half is dropped.</p>
+<pre><pre class="playground"><code class="language-rust">use std::thread;
+use std::sync::mpsc;
+use std::time::Duration;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let vals = vec![
+            String::from(&quot;hi&quot;),
+            String::from(&quot;from&quot;),
+            String::from(&quot;the&quot;),
+            String::from(&quot;thread&quot;),
+        ];
+
+        for val in vals {
+            tx.send(val).unwrap();
+            thread::sleep(Duration::from_secs(1));
+        }
+    });
+
+    for received in rx {
+        println!(&quot;Got: {}&quot;, received);
+    }
+}
+</code></pre></pre>
+<ul>
+<li>mpsc: multiple producer, single consumer</li>
+<li>tx: transmitter</li>
+<li>rx: receiver</li>
+</ul>
+<h2 id="shared-state-concurrency"><a class="header" href="#shared-state-concurrency">Shared state Concurrency</a></h2>
+<p>Mutexes are one of the concurrency primitives for shared memory.</p>
+<p>Mutex is an abbreviation for mutual exclusion, as in, a mutex allows
+only one thread to access some data at any given time. To access the
+data in a mutex, a thread must first signal that it wants access by
+asking to acquire the mutex’s lock. The lock is a data structure that
+is part of the mutex that keeps track of who currently has exclusive
+access to the data.</p>
+<pre><pre class="playground"><code class="language-rust">use std::sync::{Mutex, Arc};
+use std::thread;
+
+fn main() {
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        let counter = Arc::clone(&amp;counter);
+        let handle = thread::spawn(move || {
+            let mut num = counter.lock().unwrap();
+
+            *num += 1;
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!(&quot;Result: {}&quot;, *counter.lock().unwrap());
+}
+</code></pre></pre>
+<p>The result will be 10.</p>
+<h2 id="sync-and-send-traits"><a class="header" href="#sync-and-send-traits">Sync and Send Traits</a></h2>
+<p>The <code>Send</code> marker trait indicates that ownership of the type
+implementing <code>Send</code> can be transferred between threads. Almost every
+Rust type is <code>Send</code></p>
+<p>The <code>Sync</code> marker trait indicates that it is safe for the type
+implementing <code>Sync</code> to be referenced from multiple threads. In other
+words, any type T is Sync if &amp;T (a reference to T) is Send, meaning
+the reference can be sent safely to another thread.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-17---oop-features-of-rust"><a class="header" href="#chapter-17---oop-features-of-rust">Chapter 17 - OOP Features of Rust</a></h1>
+<ul>
+<li>Objects contains Data and Behavior</li>
+</ul>
+<p>structs and enums have data, and impl blocks provide methods on
+structs and enums. Even though structs and enums with methods aren’t
+called objects, they provide the same functionality, according to the
+Gang of Four’s definition of objects.</p>
+<ul>
+<li>Encapsulation that Hides Implementation Details</li>
+</ul>
+<p>We can use the <code>pub</code> keyword to decide which modules, types,
+functions, and methods in our code should be public, and by default
+everything else is private. This provides encapsulation.</p>
+<ul>
+<li>Inheritance as a Type System and as Code Sharing</li>
+</ul>
+<p>Rust doesn't have the usual inheritance property found in other OOP
+langues which allows an object to inherit parent's object data and
+behavior without having to define them again. But it has trait
+mechanism and polymorphism to enable code reuse.</p>
+<h2 id="using-trait-objects-that-allow-for-values-of-different-types"><a class="header" href="#using-trait-objects-that-allow-for-values-of-different-types">Using Trait Objects That Allow for Values of Different Types</a></h2>
+<p>Objective: A library that iterates through a list of items and calls
+<code>draw</code> method on each of them. Note that the some items may have been
+created by the user of the library itself rather than the library.</p>
+<p>OOP solution: Have a class named <code>Component</code> with a method named
+<code>draw</code> on it. Other classes will inherit this class and may provide
+custom behavior. How will Rust solve this kind of problem ?</p>
+<p>A rust solution for the above problem:</p>
+<pre><code>pub trait Draw {
+    fn draw(&amp;self);
+}
+
+pub struct Screen {
+    pub components: Vec&lt;Box&lt;dyn Draw&gt;&gt;,
+}
+
+impl Screen {
+    pub fn run(&amp;self) {
+        for component in self.components.iter() {
+            component.draw();
+        }
+    }
+}
+</code></pre>
+<p>The above vector is of type <code>Box&lt;dyn Draw&gt;</code>, which is a trait object; it’s a
+stand-in for any type inside a Box that implements the <code>Draw</code> trait.</p>
+<p>You might be wondering why not a solution like this which involves
+generic type and trait bounds:</p>
+<pre><code>pub struct Screen&lt;T: Draw&gt; {
+    pub components: Vec&lt;T&gt;,
+}
+
+impl&lt;T&gt; Screen&lt;T&gt;
+    where T: Draw {
+    pub fn run(&amp;self) {
+        for component in self.components.iter() {
+            component.draw();
+        }
+    }
+}
+</code></pre>
+<p>The above style won't work in all scenarios. It will only work for
+homogenous collections.</p>
+<h2 id="object-safety-is-required-for-trait-object"><a class="header" href="#object-safety-is-required-for-trait-object">Object safety is required for Trait Object</a></h2>
+<p>A trait is object safe if all the methods defined in the trait have
+the following properties:</p>
+<ul>
+<li>The return type isn’t <code>Self</code>.</li>
+<li>There are no generic type parameters.</li>
+</ul>
+<h2 id="implementing-an-oodp"><a class="header" href="#implementing-an-oodp">Implementing an OODP</a></h2>
+<p>Desired behavior we want:</p>
+<pre><pre class="playground"><code class="language-rust">use blog::Post;
+
+fn main() {
+    let mut post = Post::new();
+
+    post.add_text(&quot;I ate a salad for lunch today&quot;);
+    assert_eq!(&quot;&quot;, post.content());
+
+    post.request_review();
+    assert_eq!(&quot;&quot;, post.content());
+
+    post.approve();
+    assert_eq!(&quot;I ate a salad for lunch today&quot;, post.content());
+}
+</code></pre></pre>
+<p>The implementation for the above behavior:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub struct Post {
+    state: Option&lt;Box&lt;dyn State&gt;&gt;,
+    content: String,
+}
+
+impl Post {
+    pub fn new() -&gt; Post {
+        Post {
+            state: Some(Box::new(Draft {})),
+            content: String::new(),
+        }
+    }
+
+    pub fn approve(&amp;mut self) {
+        if let Some(s) = self.state.take() {
+            self.state = Some(s.approve())
+        }
+    }
+
+   pub fn add_text(&amp;mut self, text: &amp;str) {
+        self.content.push_str(text);
+    }
+
+    pub fn content(&amp;self) -&gt; &amp;str {
+        self.state.as_ref().unwrap().content(&amp;self)
+    }
+
+    pub fn request_review(&amp;mut self) {
+        if let Some(s) = self.state.take() {
+            self.state = Some(s.request_review())
+        }
+    }
+
+
+}
+
+trait State {
+ fn request_review(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt;;
+ fn approve(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt;;
+ fn content&lt;'a&gt;(&amp;self, post: &amp;'a Post) -&gt; &amp;'a str {
+        &quot;&quot;
+ }
+}
+
+struct Draft {}
+
+impl State for Draft {
+    fn request_review(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt; {
+        Box::new(PendingReview {})
+    }
+    fn approve(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt; {
+        self
+    }
+}
+
+struct PendingReview {}
+
+impl State for PendingReview {
+    fn request_review(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt; {
+        self
+    }
+    fn approve(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt; {
+        Box::new(Published {})
+    }
+}
+
+struct Published {}
+
+impl State for Published {
+    fn request_review(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt; {
+        self
+    }
+
+    fn approve(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt; {
+        self
+    }
+
+    fn content&lt;'a&gt;(&amp;self, post: &amp;'a Post) -&gt; &amp;'a str {
+        &amp;post.content
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-18-patterns-and-matching"><a class="header" href="#chapter-18-patterns-and-matching">Chapter 18: Patterns and matching</a></h1>
+<p>Patterns come in two forms: refutable and irrefutable. Patterns that
+will match for any possible value passed are irrefutable. An example
+would be <code>x</code> in the statement <code>let x = 5;</code> because <code>x</code> matches
+anything and therefore cannot fail to match. Patterns that can fail to
+match for some possible value are refutable. An example would be
+<code>Some(x)</code> in the expression <code>if let Some(x) = a_value</code> because if the
+value in the <code>a_value</code> variable is <code>None</code> rather than <code>Some</code>, the
+<code>Some(x)</code> pattern will not match.</p>
+<p>Function parameters, let statements, and for loops can only accept
+irrefutable patterns, because the program cannot do anything
+meaningful when values don’t match. The if let and while let
+expressions only accept refutable patterns, because by definition
+they’re intended to handle possible failure: the functionality of a
+conditional is in its ability to perform differently depending on
+success or failure.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-19-advanced-features"><a class="header" href="#chapter-19-advanced-features">Chapter 19: Advanced Features</a></h1>
+<h2 id="unsafe-superpowers"><a class="header" href="#unsafe-superpowers">Unsafe Superpowers</a></h2>
+<p>To switch to unsafe Rust, use the <code>unsafe</code> keyword and then start a new
+block that holds the unsafe code. You can take four actions in unsafe
+Rust, called unsafe superpowers, that you can’t in safe Rust. Those
+superpowers include the ability to:</p>
+<ul>
+<li>Dereference a raw pointer</li>
+<li>Call an unsafe function or method</li>
+<li>Access or modify a mutable static variable</li>
+<li>Implement an unsafe trait</li>
+</ul>
+<h3 id="dereferencing-a-raw-pointer"><a class="header" href="#dereferencing-a-raw-pointer">Dereferencing a raw pointer</a></h3>
+<p>Raw pointers can be immutable or mutable and are written as:</p>
+<ul>
+<li>Immutable: *const T</li>
+<li>Mutable: *mut T</li>
+</ul>
+<p>The asterisk isn’t the dereference operator; it’s part of the type
+name.</p>
+<p>Different from references and smart pointers, raw pointers:</p>
+<ul>
+<li>Are allowed to ignore the borrowing rules by having both immutable
+and mutable pointers or multiple mutable pointers to the same
+location</li>
+<li>Aren’t guaranteed to point to valid memory</li>
+<li>Are allowed to be null</li>
+<li>Don’t implement any automatic cleanup</li>
+</ul>
+<p>Example:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut num = 5;
+
+let r1 = &amp;num as *const i32;
+let r2 = &amp;mut num as *mut i32;
+
+unsafe {
+    println!(&quot;r1 is: {}&quot;, *r1);
+    println!(&quot;r2 is: {}&quot;, *r2);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Another example which will likely lead to segmentation fault:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let address = 0x012345usize;
+let r = address as *const i32;
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="calling-an-unsafe-function-or-method"><a class="header" href="#calling-an-unsafe-function-or-method">Calling an Unsafe Function or method</a></h3>
+<p>Example:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>unsafe fn dangerous() {}
+
+unsafe {
+    dangerous();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The <code>unsafe</code> keyword in this context indicates the function has
+requirements we need to uphold when we call this function, because
+Rust can’t guarantee we’ve met these requirements. By calling an
+<code>unsafe</code> function within an unsafe block, we’re saying that we’ve read
+this function’s documentation and take responsibility for upholding
+the function’s contracts.</p>
+<h3 id="ffi"><a class="header" href="#ffi">FFI</a></h3>
+<pre><pre class="playground"><code class="language-rust">extern &quot;C&quot; {
+    fn abs(input: i32) -&gt; i32;
+}
+
+fn main() {
+    unsafe {
+        println!(&quot;Absolute value of -3 according to C: {}&quot;, abs(-3));
+    }
+}
+</code></pre></pre>
+<p>Within the <code>extern &quot;C&quot;</code> block, we list the names and signatures of
+external functions from another language we want to call. The <code>&quot;C&quot;</code>
+part defines which application binary interface (ABI) the external
+function uses: the ABI defines how to call the function at the
+assembly level. The &quot;C&quot; ABI is the most common and follows the C
+programming language’s ABI.</p>
+<h3 id="accessing-or-modifying-a-mutable-static-variable"><a class="header" href="#accessing-or-modifying-a-mutable-static-variable">Accessing or Modifying a Mutable Static Variable</a></h3>
+<p>In Rust, global variables are called static variables.</p>
+<pre><pre class="playground"><code class="language-rust">static HELLO_WORLD: &amp;str = &quot;Hello, world!&quot;;
+
+fn main() {
+    println!(&quot;name is: {}&quot;, HELLO_WORLD);
+}
+</code></pre></pre>
+<p>In the above example the variable type is <code>&amp;'static str</code>. Since,
+static variables can only store references with the <code>'static</code>
+lifetime, you don't need to annotate it explicityly.</p>
+<pre><pre class="playground"><code class="language-rust">static mut COUNTER: u32 = 0;
+
+fn add_to_count(inc: u32) {
+    unsafe {
+        COUNTER += inc;
+    }
+}
+
+fn main() {
+    add_to_count(3);
+
+    unsafe {
+        println!(&quot;COUNTER: {}&quot;, COUNTER);
+    }
+}
+</code></pre></pre>
+<h3 id="implementing-an-unsafe-trait"><a class="header" href="#implementing-an-unsafe-trait">Implementing an Unsafe Trait</a></h3>
+<p>A trait is unsafe when at least one of its methods has some invariant
+that the compiler can’t verify. We can declare that a trait is unsafe
+by adding the unsafe keyword before trait and marking the
+implementation of the trait as unsafe too.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>unsafe trait Foo {
+    // methods go here
+}
+
+unsafe impl Foo for i32 {
+    // method implementations go here
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="advanced-traits"><a class="header" href="#advanced-traits">Advanced Traits</a></h2>
+<h3 id="specifying-placeholder-types-in-trait-definitions-with-associated-types"><a class="header" href="#specifying-placeholder-types-in-trait-definitions-with-associated-types">Specifying Placeholder Types in Trait Definitions with Associated Types</a></h3>
+<p>Associated types connect a type placeholder with a trait such that the
+trait method definitions can use these placeholder types in their
+signatures.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub trait Iterator {
+    type Item;
+
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt;;
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>And it's implementation:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Iterator for Counter {
+    type Item = u32;
+
+    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; {
+        // --snip--
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="default-generic-type-parameters-and-operator-overloading"><a class="header" href="#default-generic-type-parameters-and-operator-overloading">Default Generic Type Parameters and Operator Overloading</a></h3>
+<p>When we use generic type parameters, we can specify a default concrete
+type for the generic type. . The syntax for specifying a default type
+for a generic type is <code>&lt;PlaceholderType=ConcreteType&gt;</code> when declaring
+the generic type.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait Add&lt;RHS=Self&gt; {
+    type Output;
+
+    fn add(self, rhs: RHS) -&gt; Self::Output;
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>If we don’t specify a concrete type for <code>RHS</code> when we implement the
+<code>Add</code> trait, the type of <code>RHS</code> will default to <code>Self</code>, which will be
+the type we’re implementing <code>Add</code> on.</p>
+<p>Operator overloading is customizing the behavior of an operator (such
+as +) in particular situations.</p>
+<p>Rust doesn’t allow you to create your own operators or overload
+arbitrary operators. But you can overload the operations and
+corresponding traits listed in <code>std::ops</code> by implementing the traits
+associated with the operator.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::ops::Add;
+
+struct Millimeters(u32);
+struct Meters(u32);
+
+impl Add&lt;Meters&gt; for Millimeters {
+    type Output = Millimeters;
+
+    fn add(self, other: Meters) -&gt; Millimeters {
+        Millimeters(self.0 + (other.0 * 1000))
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="fully-qualified-syntax-for-disambiguation-calling-methods-with-the-same-name"><a class="header" href="#fully-qualified-syntax-for-disambiguation-calling-methods-with-the-same-name">Fully Qualified Syntax for Disambiguation: Calling Methods with the Same Name</a></h3>
+<pre><pre class="playground"><code class="language-rust">trait Pilot {
+    fn fly(&amp;self);
+}
+
+trait Wizard {
+    fn fly(&amp;self);
+}
+
+struct Human;
+
+impl Pilot for Human {
+    fn fly(&amp;self) {
+        println!(&quot;This is your captain speaking.&quot;);
+    }
+}
+
+impl Wizard for Human {
+    fn fly(&amp;self) {
+        println!(&quot;Up!&quot;);
+    }
+}
+
+impl Human {
+    fn fly(&amp;self) {
+        println!(&quot;*waving arms furiously*&quot;);
+    }
+}
+
+fn main() {
+    let person = Human;
+    Pilot::fly(&amp;person);
+    Wizard::fly(&amp;person);
+    person.fly();
+}
+</code></pre></pre>
+<p>Example without the '&amp;self' argument:</p>
+<pre><pre class="playground"><code class="language-rust">trait Animal {
+    fn baby_name() -&gt; String;
+}
+
+struct Dog;
+
+impl Dog {
+    fn baby_name() -&gt; String {
+        String::from(&quot;Spot&quot;)
+    }
+}
+
+impl Animal for Dog {
+    fn baby_name() -&gt; String {
+        String::from(&quot;puppy&quot;)
+    }
+}
+
+fn main() {
+    println!(&quot;A baby dog is called a {}&quot;, Dog::baby_name()); // A baby dog is called a Spot
+    println!(&quot;A baby dog is called a {}&quot;, &lt;Dog as Animal&gt;::baby_name()); // A baby dog is called a puppy
+}
+</code></pre></pre>
+<h3 id="using-supertraits-to-require-one-traits-functionality-within-another-trait"><a class="header" href="#using-supertraits-to-require-one-traits-functionality-within-another-trait">Using Supertraits to Require One Trait’s Functionality Within Another Trait</a></h3>
+<p>Sometimes, you might need one trait to use another trait’s
+functionality. In this case, you need to rely on the dependent trait
+also being implemented. The trait you rely on is a supertrait of the
+trait you’re implementing.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fmt;
+
+trait OutlinePrint: fmt::Display {
+    fn outline_print(&amp;self) {
+        let output = self.to_string();
+        let len = output.len();
+        println!(&quot;{}&quot;, &quot;*&quot;.repeat(len + 4));
+        println!(&quot;*{}*&quot;, &quot; &quot;.repeat(len + 2));
+        println!(&quot;* {} *&quot;, output);
+        println!(&quot;*{}*&quot;, &quot; &quot;.repeat(len + 2));
+        println!(&quot;{}&quot;, &quot;*&quot;.repeat(len + 4));
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><code>to_string</code> is a function implemented for <code>Display</code> trait.</p>
+<h3 id="using-the-newtype-pattern-to-implement-external-traits-on-external-types"><a class="header" href="#using-the-newtype-pattern-to-implement-external-traits-on-external-types">Using the Newtype Pattern to Implement External Traits on External Types</a></h3>
+<p>Orphan rule: We’re allowed to implement a trait on a type as long as
+either the trait or the type are local to our crate.</p>
+<p>You can overcome the above rule using the newtype pattern.</p>
+<pre><pre class="playground"><code class="language-rust">use std::fmt;
+
+struct Wrapper(Vec&lt;String&gt;);
+
+impl fmt::Display for Wrapper {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, &quot;[{}]&quot;, self.0.join(&quot;, &quot;))
+    }
+}
+
+fn main() {
+    let w = Wrapper(vec![String::from(&quot;hello&quot;), String::from(&quot;world&quot;)]);
+    println!(&quot;w = {}&quot;, w);
+}
+</code></pre></pre>
+<h2 id="advanced-types"><a class="header" href="#advanced-types">Advanced Types</a></h2>
+<h3 id="using-the-newtype-pattern-for-type-safety-and-abstraction"><a class="header" href="#using-the-newtype-pattern-for-type-safety-and-abstraction">Using the Newtype Pattern for Type Safety and Abstraction</a></h3>
+<p>Example: The <code>Millimeters</code> and <code>Meters</code> structs wrapped <code>u32</code> values
+in a newtype.</p>
+<h3 id="creating-type-synonyms-with-type-aliases"><a class="header" href="#creating-type-synonyms-with-type-aliases">Creating Type Synonyms with Type Aliases</a></h3>
+<p>Rust provides the ability to declare a type alias to give an existing
+type another name. For this we use the <code>type</code> keyword.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>type Kilometers = i32;
+<span class="boring">}
+</span></code></pre></pre>
+<h3 id="the-never-type-that-never-returns"><a class="header" href="#the-never-type-that-never-returns">The Never Type that Never Returns</a></h3>
+<p>Rust has a special type named <code>!</code> that’s known in type theory lingo as
+the empty type because it has no values. We prefer to call it the
+never type because it stands in the place of the return type when a
+function will never return.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn bar() -&gt; ! {
+    // --snip--
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Functions that return never are called diverging functions.</p>
+<p>Example usage:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let guess: u32 = match guess.trim().parse() {
+    Ok(num) =&gt; num,
+    Err(_) =&gt; continue,
+};
+<span class="boring">}
+</span></code></pre></pre>
+<p>The <code>continue</code> has a <code>!</code> value.</p>
+<h3 id="dynamically-sized-types-and-the-sized-trait"><a class="header" href="#dynamically-sized-types-and-the-sized-trait">Dynamically Sized Types and the Sized Trait</a></h3>
+<p>Dynamically sized types or DSTs or unsized types let us write code
+using values whose size we can know only at runtime.</p>
+<p>The following code won't compile:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s1: str = &quot;Hello there!&quot;;
+let s2: str = &quot;How's it going?&quot;;
+<span class="boring">}
+</span></code></pre></pre>
+<p>Rust needs to know how much memory to allocate for any value of a
+particular type, and all values of a type must use the same amount of
+memory. If Rust allowed us to write this code, these two str values
+would need to take up the same amount of space. But they have
+different lengths: s1 needs 12 bytes of storage and s2 needs 15. This
+is why it’s not possible to create a variable holding a dynamically
+sized type.</p>
+<p>We make the types of s1 and s2 a &amp;str rather than a str to make it
+work. So although a <code>&amp;T</code> is a single value that stores the memory
+address of where the <code>T</code> is located, a <code>&amp;str</code> is two values: the
+address of the str and its length. As such, we can know the size of a
+<code>&amp;str</code> value at compile time: it’s twice the length of a <code>usize</code>.</p>
+<p>To work with DSTs, Rust has a particular trait called the <code>Sized</code> trait
+to determine whether or not a type’s size is known at compile time.</p>
+<p>That is, a generic function definition like this:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn generic&lt;T&gt;(t: T) {
+    // --snip--
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>is actually treated as though we had written this:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn generic&lt;T: Sized&gt;(t: T) {
+    // --snip--
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>By default, generic functions will work only on types that have a
+known size at compile time. However, you can use the following special
+syntax to relax this restriction:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn generic&lt;T: ?Sized&gt;(t: &amp;T) {
+    // --snip--
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>A trait bound on <code>?Sized</code> is the opposite of a trait bound on <code>Sized</code>: we
+would read this as “T may or may not be Sized.” This syntax is only
+available for Sized, not any other traits.</p>
+<h2 id="advanced-functions-and-closures"><a class="header" href="#advanced-functions-and-closures">Advanced Functions and Closures</a></h2>
+<h3 id="function-pointers"><a class="header" href="#function-pointers">Function Pointers</a></h3>
+<p>We can pass regular functions to functions using function
+pointers. Functions coerce to the type <code>fn</code> (with a lowercase f), not
+to be confused with the <code>Fn</code> closure trait. The <code>fn</code> type is called a
+function pointer.</p>
+<pre><pre class="playground"><code class="language-rust">fn add_one(x: i32) -&gt; i32 {
+    x + 1
+}
+
+fn do_twice(f: fn(i32) -&gt; i32, arg: i32) -&gt; i32 {
+    f(arg) + f(arg)
+}
+
+fn main() {
+    let answer = do_twice(add_one, 5);
+
+    println!(&quot;The answer is: {}&quot;, answer);
+}
+</code></pre></pre>
+<p>Function pointers implement all three of the closure traits (Fn,
+FnMut, and FnOnce), so you can always pass a function pointer as an
+argument for a function that expects a closure. It’s best to write
+functions using a generic type and one of the closure traits so your
+functions can accept either functions or closures.</p>
+<h3 id="returning-closures"><a class="header" href="#returning-closures">Returning Closures</a></h3>
+<p>Closures are represented by traits, which means you can’t return
+closures directly. A way to make it work:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn returns_closure() -&gt; Box&lt;dyn Fn(i32) -&gt; i32&gt; {
+    Box::new(|x| x + 1)
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Another way to make it work (not mentioned in the book):</p>
+<pre><pre class="playground"><code class="language-rust">fn returns_closure() -&gt; impl (Fn(i32) -&gt; i32) {
+    |x| x + 1
+}
+
+fn main() {
+    let f = returns_closure();
+    let g = f(3);
+    println!(&quot;hello world&quot;);
+    println!(&quot;hello world, {}&quot;, g);
+}
+</code></pre></pre>
+<h2 id="macros"><a class="header" href="#macros">Macros</a></h2>
+<p>Rust has two kinds of Macros:</p>
+<ul>
+<li>Declarative macros with <code>macro_rules!</code></li>
+<li>Procedural macros</li>
+</ul>
+<p>There are three kinds of procedural macros:</p>
+<ul>
+<li>Custom <code>#[derive]</code> macros</li>
+<li>Attribute-like macros that define custom attributes usable on any item</li>
+<li>Function-like macros that look like function calls but operate on
+the tokens specified as their argument</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-20"><a class="header" href="#chapter-20">Chapter 20</a></h1>
+<p>This is a project and I won't be covering it here.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
+<ul>
+<li><a href="https://stackoverflow.com/q/27831944/1651941">Storing a closure in Rust</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>

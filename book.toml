@@ -1,0 +1,6 @@
+[book]
+authors = ["Sibi Prabakaran"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Rust Book Summary"

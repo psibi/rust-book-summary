@@ -1,0 +1,564 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Smart Pointers - Rust Book Summary</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">3.</strong> Programming a Guessing Game</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">4.</strong> Common Programming Concepts</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">5.</strong> Undersanding Ownership</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">6.</strong> Using Structs</a></li><li class="chapter-item expanded "><a href="chapter_6.html"><strong aria-hidden="true">7.</strong> Enums and Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">8.</strong> Managing Growing Projects with Packages, Crates and Modules</a></li><li class="chapter-item expanded "><a href="chapter_8.html"><strong aria-hidden="true">9.</strong> Common Collections</a></li><li class="chapter-item expanded "><a href="chapter_9.html"><strong aria-hidden="true">10.</strong> Error Handling</a></li><li class="chapter-item expanded "><a href="chapter_10.html"><strong aria-hidden="true">11.</strong> Generic Types, Traits and Lifetimes</a></li><li class="chapter-item expanded "><a href="chapter_11.html"><strong aria-hidden="true">12.</strong> Writing Automated Tests</a></li><li class="chapter-item expanded "><a href="chapter_12.html"><strong aria-hidden="true">13.</strong> Chapter 12</a></li><li class="chapter-item expanded "><a href="chapter_13.html"><strong aria-hidden="true">14.</strong> Functional language features: Iterators and Closures</a></li><li class="chapter-item expanded "><a href="chapter_14.html"><strong aria-hidden="true">15.</strong> More about Cargo and Crates.io</a></li><li class="chapter-item expanded "><a href="chapter_15.html" class="active"><strong aria-hidden="true">16.</strong> Smart Pointers</a></li><li class="chapter-item expanded "><a href="chapter_16.html"><strong aria-hidden="true">17.</strong> Fearless Concurrency</a></li><li class="chapter-item expanded "><a href="chapter_17.html"><strong aria-hidden="true">18.</strong> OOP Features of Rust</a></li><li class="chapter-item expanded "><a href="chapter_18.html"><strong aria-hidden="true">19.</strong> Patterns and matching</a></li><li class="chapter-item expanded "><a href="chapter_19.html"><strong aria-hidden="true">20.</strong> Advanced Features</a></li><li class="chapter-item expanded "><a href="chapter_20.html"><strong aria-hidden="true">21.</strong> Chapter 20</a></li><li class="chapter-item expanded "><a href="miscellaneous.html"><strong aria-hidden="true">22.</strong> Miscellaneous</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust Book Summary</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="chapter-15---smart-pointers"><a class="header" href="#chapter-15---smart-pointers">Chapter 15 - Smart Pointers</a></h1>
+<ul>
+<li>A pointer is a general concept for a variable that contains an address
+in memory. This address refers to, or “points at,” some other data.</li>
+<li>Smart pointers, on the other hand, are data structures that not only
+act like a pointer but also have additional metadata and
+capabilities.</li>
+<li>Some examples of smart pointers:
+<ul>
+<li>Reference counting smart pointer</li>
+<li>String (metadata is capactiy and ensure that it is valid UTF-8)</li>
+<li>Vec<T></li>
+</ul>
+</li>
+</ul>
+<p>Smart pointers are usually implemented using structs. The
+characteristic that distinguishes a smart pointer from an ordinary
+struct is that smart pointers implement the <code>Deref</code> and <code>Drop</code> traits.</p>
+<h2 id="box"><a class="header" href="#box">Box<T></a></h2>
+<ul>
+<li>Boxes allow you to store data on the heap rather than the
+stack. What remains on the stack is the pointer to the heap data.</li>
+</ul>
+<p>Usecase of Boxes:</p>
+<ul>
+<li>When you have a type whose size can’t be known at compile time.</li>
+<li>When you have a large amount of data and you want to transfer
+ownership but ensure the data won’t be copied when you do so</li>
+<li>When you want to own a value and you care only that it’s a type that
+implements a particular trait rather than being of a specific type</li>
+</ul>
+<h2 id="enabling-recursive-types-with-boxes"><a class="header" href="#enabling-recursive-types-with-boxes">Enabling recursive types with Boxes</a></h2>
+<pre><pre class="playground"><code class="language-rust">enum List {
+    Cons(i32, Box&lt;List&gt;),
+    Nil,
+}
+
+use crate::List::{Cons, Nil};
+
+fn main() {
+    let list = Cons(1,
+        Box::new(Cons(2,
+            Box::new(Cons(3,
+                Box::new(Nil))))));
+}
+</code></pre></pre>
+<h2 id="deref-trait"><a class="header" href="#deref-trait">Deref Trait</a></h2>
+<p>This program doesn't compile:</p>
+<pre><pre class="playground"><code class="language-rust">struct MyBox&lt;T&gt;(T);
+
+impl&lt;T&gt; MyBox&lt;T&gt; {
+    fn new(x: T) -&gt; MyBox&lt;T&gt; {
+        MyBox(x)
+    }
+}
+
+fn main() {
+    let x = 5;
+    let y = MyBox::new(x);
+
+    assert_eq!(5, x);
+    assert_eq!(5, *y); // The line which causes compile errors
+}
+</code></pre></pre>
+<p>This is the change required to make it compile:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::ops::Deref;
+
+impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
+    type Target = T;
+
+    fn deref(&amp;self) -&gt; &amp;T {
+        &amp;self.0
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="implicit-deref-coercions-with-functions-and-methods"><a class="header" href="#implicit-deref-coercions-with-functions-and-methods">Implicit Deref Coercions with Functions and Methods</a></h2>
+<p>Deref coercion converts a reference to a type that implements <code>Deref</code>
+into a reference to a type that <code>Deref</code> can convert the original type
+into.</p>
+<p>Deref coercion is a convenience that Rust performs on arguments to
+functions and methods.</p>
+<p>With deref coercion, a program like this will compile successfully:</p>
+<pre><pre class="playground"><code class="language-rust">fn hello(name: &amp;str) {
+    println!(&quot;Hello, {}!&quot;, name);
+}
+
+fn main() {
+    let m = MyBox::new(String::from(&quot;Rust&quot;));
+    hello(&amp;m);
+}
+</code></pre></pre>
+<p>If you didn't have deref coercion, you have to write the above code
+like this:</p>
+<pre><pre class="playground"><code class="language-rust">fn hello(name: &amp;str) {
+    println!(&quot;Hello, {}!&quot;, name);
+}
+
+fn main() {
+    let m = MyBox::new(String::from(&quot;Rust&quot;));
+    hello(&amp;(*m)[..]);
+}
+</code></pre></pre>
+<h2 id="deref-coercion-and-mutability"><a class="header" href="#deref-coercion-and-mutability">Deref Coercion and Mutability</a></h2>
+<p>Similar to how you use the <code>Deref</code> trait to override the * operator on
+immutable references, you can use the <code>DerefMut</code> trait to override the *
+operator on mutable references.</p>
+<p>Rust does deref coercion when it finds types and trait implementations
+in three cases:</p>
+<ul>
+<li>From <code>&amp;T</code> to <code>&amp;U</code> when <code>T: Deref&lt;Target=U&gt;</code></li>
+<li>From <code>&amp;mut T</code> to <code>&amp;mut U</code> when <code>T: DerefMut&lt;Target=U&gt;</code></li>
+<li>From <code>&amp;mut T</code> to <code>&amp;U</code> when <code>T: Deref&lt;Target=U&gt;</code></li>
+</ul>
+<p>The first two cases are the same except for mutability. In the third
+one, Rust will also coerce a mutable reference to an immutable
+one. But note that reverse is not possible.</p>
+<h2 id="drop-trait"><a class="header" href="#drop-trait">Drop trait</a></h2>
+<p>You can provide an implementation for the <code>Drop</code> trait on any type, and
+the code you specify can be used to release resources like files or
+network connections.</p>
+<p><code>Box&lt;T&gt;</code> customizes <code>Drop</code> to deallocate the space on the heap that
+the box points to.</p>
+<p>Example implementation:</p>
+<pre><pre class="playground"><code class="language-rust">struct CustomSmartPointer {
+    data: String,
+}
+
+impl Drop for CustomSmartPointer {
+    fn drop(&amp;mut self) {
+        println!(&quot;Dropping CustomSmartPointer with data `{}`!&quot;, self.data);
+    }
+}
+
+fn main() {
+    let c = CustomSmartPointer { data: String::from(&quot;my stuff&quot;) };
+    let d = CustomSmartPointer { data: String::from(&quot;other stuff&quot;) };
+    println!(&quot;CustomSmartPointers created.&quot;);
+}
+</code></pre></pre>
+<p>You can also drop a value early by using <code>std::mem::drop</code>.</p>
+<h2 id="rc-the-reference-counted-smart-pointer"><a class="header" href="#rc-the-reference-counted-smart-pointer">Rc<T>, the Reference counted Smart Pointer</a></h2>
+<p>In the majority of cases, ownership is clear: you know exactly which
+variable owns a given value. However, there are cases when a single
+value might have multiple owners. To enable multiple ownership, Rust
+has a type called <code>Rc&lt;T&gt;</code>.</p>
+<p>The type <code>Rc&lt;T&gt;</code> provides shared ownership of a value of type T,
+allocated in the heap. Invoking <code>clone</code> on <code>Rc</code> produces a new pointer to
+the same value in the heap.</p>
+<p><code>Rc</code> uses non-atomic reference counting. This means that overhead is
+very low, but an <code>Rc</code> cannot be sent between threads.</p>
+<p>Example code:</p>
+<pre><pre class="playground"><code class="language-rust">enum List {
+    Cons(i32, Rc&lt;List&gt;),
+    Nil,
+}
+
+use crate::List::{Cons, Nil};
+use std::rc::Rc;
+
+fn main() {
+    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    let b = Cons(3, Rc::clone(&amp;a));
+    let c = Cons(4, Rc::clone(&amp;a));
+}
+</code></pre></pre>
+<h2 id="refcell-and-interior-mutability"><a class="header" href="#refcell-and-interior-mutability">RefCell<T> and Interior mutability</a></h2>
+<ul>
+<li><a href="https://www.reddit.com/r/rust/comments/755a5x/i_have_finally_understood_what_cell_and_refcell/">Reddit summary on Cell and RefCell</a></li>
+<li>RefCell is a mutable memory location with dynamically checked borrow rules.</li>
+<li>Mutating the value inside an immutable value is the interior mutability pattern.</li>
+</ul>
+<p>Let's actually check if it has dynamically checked borrow rules. In
+Rust, that means a single variable cannot have two owners. Let's check it with <code>RefCell</code>:</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    println!(&quot;{:?}&quot;, c);
+    let b = c.into_inner();
+    println!(&quot;{:?}&quot;, b);
+}
+</code></pre></pre>
+<p>The above program works fine. But you can introduce a compile error like this:</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    println!(&quot;{:?}&quot;, c);
+    let b = c.into_inner();
+    println!(&quot;{:?}&quot;, b);
+    println!(&quot;{:?}&quot;, c); // offending line
+}
+</code></pre></pre>
+<p>or like this:</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    println!(&quot;{:?}&quot;, c);
+    let b = c.into_inner();
+    println!(&quot;{:?}&quot;, b);
+    let b = c.into_inner(); // offending line
+}
+</code></pre></pre>
+<p>But both the above are compile errors. What does it mean by
+dynamically checked ? Let's see an example of mixing mutable and
+immutable reference.</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    {
+        let mut b = c.borrow_mut();
+        *b = 6;
+        *b = 7;
+    }
+    println!(&quot;{:?}&quot;, c); // prints 7
+}
+</code></pre></pre>
+<p>The above problem works fine. But let's have two mutable reference at
+once:</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    {
+        let mut b = c.borrow_mut();
+        *b = 6;
+        *b = 7;
+        let mut d = c.borrow_mut();
+        *d = 8;
+    }
+    println!(&quot;{:?}&quot;, c);
+}
+</code></pre></pre>
+<pre><code class="language-shellsession">$ ./rust4
+thread 'main' panicked at 'already borrowed: BorrowMutError', src/libcore/result.rs:1084:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace.
+</code></pre>
+<p>Now that causes panic as expected. Another way to cause panic is to
+mix mutable and immutable reference. Let's do that:</p>
+<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+
+fn main() {
+    let c = RefCell::new(5);
+    {
+        let mut b = c.borrow_mut();
+        *b = 6;
+        *b = 7;
+        let d = c.borrow();
+        println!(&quot;{:?}&quot;, d);
+    }
+    println!(&quot;{:?}&quot;, c);
+}
+</code></pre></pre>
+<p>And bam, even that crashes at runtime.</p>
+<p><a href="https://stackoverflow.com/questions/36413364/as-i-can-make-the-vector-is-mutable-inside-struct">Sample usecase of RefCell<T></a></p>
+<h2 id="combining-rc-and-refcell"><a class="header" href="#combining-rc-and-refcell">Combining Rc<T> and RefCell<T></a></h2>
+<p>A common way to use RefCell<T> is in combination with Rc<T>. Recall
+that Rc<T> lets you have multiple owners of some data, but it only
+gives immutable access to that data. If you have an Rc<T> that holds a
+RefCell<T>, you can get a value that can have multiple owners and that
+you can mutate!</p>
+<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+enum List {
+    Cons(Rc&lt;RefCell&lt;i32&gt;&gt;, Rc&lt;List&gt;),
+    Nil,
+}
+
+use crate::List::{Cons, Nil};
+use std::rc::Rc;
+use std::cell::RefCell;
+
+fn main() {
+    let value = Rc::new(RefCell::new(5));
+
+    let a = Rc::new(Cons(Rc::clone(&amp;value), Rc::new(Nil)));
+
+    let b = Cons(Rc::new(RefCell::new(6)), Rc::clone(&amp;a));
+    let c = Cons(Rc::new(RefCell::new(10)), Rc::clone(&amp;a));
+
+    *value.borrow_mut() += 10;
+
+    println!(&quot;a after = {:?}&quot;, a);
+    println!(&quot;b after = {:?}&quot;, b);
+    println!(&quot;c after = {:?}&quot;, c);
+}
+</code></pre></pre>
+<h2 id="reference-cycle-example"><a class="header" href="#reference-cycle-example">Reference cycle example</a></h2>
+<pre><pre class="playground"><code class="language-rust">use std::rc::Rc;
+use std::cell::RefCell;
+use crate::List::{Cons, Nil};
+
+#[derive(Debug)]
+enum List {
+    Cons(i32, RefCell&lt;Rc&lt;List&gt;&gt;),
+    Nil,
+}
+
+impl List {
+    fn tail(&amp;self) -&gt; Option&lt;&amp;RefCell&lt;Rc&lt;List&gt;&gt;&gt; {
+        match self {
+            Cons(_, item) =&gt; Some(item),
+            Nil =&gt; None,
+        }
+    }
+}
+
+fn main() {
+    let a = Rc::new(Cons(5, RefCell::new(Rc::new(Nil))));
+
+    println!(&quot;a initial rc count = {}&quot;, Rc::strong_count(&amp;a));
+    println!(&quot;a next item = {:?}&quot;, a.tail());
+
+    let b = Rc::new(Cons(10, RefCell::new(Rc::clone(&amp;a))));
+
+    println!(&quot;a rc count after b creation = {}&quot;, Rc::strong_count(&amp;a));
+    println!(&quot;b initial rc count = {}&quot;, Rc::strong_count(&amp;b));
+    println!(&quot;b next item = {:?}&quot;, b.tail());
+
+    if let Some(link) = a.tail() {
+        *link.borrow_mut() = Rc::clone(&amp;b);
+    }
+
+    println!(&quot;b rc count after changing a = {}&quot;, Rc::strong_count(&amp;b));
+    println!(&quot;a rc count after changing a = {}&quot;, Rc::strong_count(&amp;a));
+
+    // Uncomment the next line to see that we have a cycle;
+    // it will overflow the stack
+    // println!(&quot;a next item = {:?}&quot;, a.tail());
+}
+</code></pre></pre>
+<p>The reference cycle happens because of this:</p>
+<pre><code>a = 5, Nil
+b = 10, a
+</code></pre>
+<p>Now after the initialization <code>let Some(link) = a.tail()</code>, the above
+structure changes into this:</p>
+<pre><code>a = 5, b
+b = 10, a
+</code></pre>
+<h2 id="weak"><a class="header" href="#weak">Weak</a></h2>
+<p>Weak is a version of <code>Rc</code> that holds a non-owning reference to the
+managed value. The value is accessed by calling <code>upgrade</code> on the <code>Weak</code>
+pointer, which returns an <code>Option&lt;Rc&lt;T&gt;&gt;</code>.</p>
+<p>Some experiments:</p>
+<p>use std::rc::Rc;</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    let c = Rc::new(5);
+    println!(&quot;{}&quot;, Rc::strong_count(&amp;c)); // 1
+    let f = Rc::clone(&amp;c);
+    println!(&quot;{}&quot;, Rc::strong_count(&amp;c)); // 2
+    println!(&quot;{}&quot;, Rc::weak_count(&amp;c));   // 0
+    let weak_f = Rc::downgrade(&amp;c);
+    println!(&quot;{}&quot;, Rc::strong_count(&amp;c)); // 2
+    println!(&quot;{}&quot;, Rc::weak_count(&amp;c));   // 1
+}
+</code></pre></pre>
+<p>Usecase for Weak:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Node {
+    value: i32,
+    parent: RefCell&lt;Weak&lt;Node&gt;&gt;,
+    children: RefCell&lt;Vec&lt;Rc&lt;Node&gt;&gt;&gt;,
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>A node will be able to refer to its parent node but doesn’t own its parent.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter_14.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="chapter_16.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter_14.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="chapter_16.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
