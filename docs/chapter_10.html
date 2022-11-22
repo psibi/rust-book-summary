@@ -148,7 +148,8 @@ fn main() {
 }
 </code></pre></pre>
 <h2 id="enum-structs"><a class="header" href="#enum-structs">Enum Structs</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Option&lt;T&gt; {
     Some(T),
@@ -177,7 +178,8 @@ fn main() {
 <h3 id="traits-defining-shared-behaviour"><a class="header" href="#traits-defining-shared-behaviour">Traits: Defining shared behaviour</a></h3>
 <p>A trait tells the Rust compiler about functionality a particular type
 has and can share with other types.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub struct Tweet {
     pub username: String,
@@ -198,7 +200,8 @@ impl Summary for Tweet {
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="default-implementations"><a class="header" href="#default-implementations">Default implementations</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub trait Summary {
     fn summarize(&amp;self) -&gt; String {
@@ -208,13 +211,15 @@ impl Summary for Tweet {
 <span class="boring">}
 </span></code></pre></pre>
 <p>To use a default implementation:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl Summary for Tweet {}
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="traits-as-parameters"><a class="header" href="#traits-as-parameters">Traits as Parameters</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub fn notify(item: impl Summary) {
     println!(&quot;Breaking news! {}&quot;, item.summarize());
@@ -225,7 +230,8 @@ impl Summary for Tweet {
 <p>The <code>impl Trait</code> syntax in the above example works for straightforward
 cases. It is actually a syntax sugar for a longer form which is called
 a trait bound:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub fn notify&lt;T: Summary&gt;(item: T) {
     println!(&quot;Breaking news! {}&quot;, item.summarize());
@@ -233,25 +239,29 @@ a trait bound:</p>
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="specifying-multiple-trait-bounds-with-the--syntax"><a class="header" href="#specifying-multiple-trait-bounds-with-the--syntax">Specifying Multiple Trait Bounds with the + Syntax</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub fn notify(item: impl Summary + Display) {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Or in the trait bound syntax form:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub fn notify&lt;T: Summary + Display&gt;(item: T) {
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="clearer-trait-bounds-with-where-clauses"><a class="header" href="#clearer-trait-bounds-with-where-clauses">Clearer Trait Bounds with where Clauses</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_function&lt;T: Display + Clone, U: Clone + Debug&gt;(t: T, u: U) -&gt; i32 {
 <span class="boring">}
 </span></code></pre></pre>
 <p>can be written as:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_function&lt;T, U&gt;(t: T, u: U) -&gt; i32
     where T: Display + Clone,
@@ -260,7 +270,8 @@ a trait bound:</p>
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="returning-types-that-implement-traits"><a class="header" href="#returning-types-that-implement-traits">Returning Types that Implement Traits</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn returns_summarizable() -&gt; impl Summary {
     Tweet {
@@ -278,7 +289,8 @@ that reference is valid.</p>
 <h2 id="the-borrow-checker"><a class="header" href="#the-borrow-checker">The Borrow Checker</a></h2>
 <p>The Rust compiler has a borrow checker that compares scopes to
 determine whether all borrows are valid.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>{
     let r;                // ---------+-- 'a
@@ -301,7 +313,8 @@ because 'b is shorter than 'a: the subject of the reference doesn’t
 live as long as the reference.</p>
 <h2 id="generic-lifetimes-in-functions"><a class="header" href="#generic-lifetimes-in-functions">Generic Lifetimes in Functions</a></h2>
 <p>This code will result in compile error:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn longest(x: &amp;str, y: &amp;str) -&gt; &amp;str {
     if x.len() &gt; y.len() {
@@ -336,7 +349,8 @@ all lowercase and very short, like generic types. Most people use the
 name 'a. We place lifetime parameter annotations after the &amp; of a
 reference, using a space to separate the annotation from the
 reference’s type.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>&amp;i32        // a reference
 &amp;'a i32     // a reference with an explicit lifetime
@@ -347,7 +361,8 @@ reference’s type.</p>
 <p>As with generic type parameters, we need to declare generic lifetime
 parameters inside angle brackets between the function name and the
 parameter list.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;'a str) -&gt; &amp;'a str {
     if x.len() &gt; y.len() {
@@ -362,7 +377,8 @@ parameter list.</p>
 <p>So far, we’ve only defined structs to hold owned types. It’s possible
 for structs to hold references, but in that case we would need to add
 a lifetime annotation on every reference in the struct’s definition.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct ImportantExcerpt&lt;'a&gt; {
     part: &amp;'a str,
@@ -374,7 +390,8 @@ a lifetime annotation on every reference in the struct’s definition.</p>
 to specify lifetime parameters for functions or structs that use
 references. But there are some code which seem to compile without
 lifetime parameters:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn first_word(s: &amp;str) -&gt; &amp;str {
     let bytes = s.as_bytes();
@@ -424,7 +441,8 @@ write because fewer symbols are necessary.</li>
 <h2 id="lifetime-annotations-in-method-definitions"><a class="header" href="#lifetime-annotations-in-method-definitions">Lifetime Annotations in Method Definitions</a></h2>
 <p>When we implement methods on a struct with lifetimes, we use the same
 syntax as that of generic type parameters:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;'a&gt; ImportantExcerpt&lt;'a&gt; {
     fn level(&amp;self) -&gt; i32 {
@@ -437,7 +455,8 @@ syntax as that of generic type parameters:</p>
 type name are required, but we’re not required to annotate the
 lifetime of the reference to <code>self</code> because of the first elision rule.</p>
 <p>Example where the third lifetime elision rule applies:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;'a&gt; ImportantExcerpt&lt;'a&gt; {
     fn announce_and_return_part(&amp;self, announcement: &amp;str) -&gt; &amp;str {
@@ -457,7 +476,8 @@ accounted for.</p>
 this reference can live for the entire duration of the program. All
 string literals have the <code>'static</code> lifetime, which we can annotate as
 follows:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s: &amp;'static str = &quot;I have a static lifetime.&quot;;
 <span class="boring">}

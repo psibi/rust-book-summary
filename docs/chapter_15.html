@@ -199,7 +199,8 @@ fn main() {
 }
 </code></pre></pre>
 <p>This is the change required to make it compile:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::ops::Deref;
 
@@ -496,7 +497,8 @@ pointer, which returns an <code>Option&lt;Rc&lt;T&gt;&gt;</code>.</p>
 }
 </code></pre></pre>
 <p>Usecase for Weak:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Node {
     value: i32,

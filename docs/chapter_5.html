@@ -137,7 +137,8 @@
                         <h1 id="chapter-5---using-structs"><a class="header" href="#chapter-5---using-structs">Chapter 5 - Using Structs</a></h1>
 <p>To define a struct, we enter the keyword struct and name the entire
 struct.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct User {
     username: String,
@@ -148,7 +149,8 @@ struct.</p>
 <span class="boring">}
 </span></code></pre></pre>
 <p>Immutable instance of the Struct:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let user1 = User {
     email: String::from(&quot;someone@example.com&quot;),
@@ -159,7 +161,8 @@ struct.</p>
 <span class="boring">}
 </span></code></pre></pre>
 <p>Mutuable instance of the Struct:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut user1 = User {
     email: String::from(&quot;someone@example.com&quot;),
@@ -173,7 +176,8 @@ user1.email = String::from(&quot;anotheremail@example.com&quot;);
 </span></code></pre></pre>
 <h2 id="some-syntax-sugars"><a class="header" href="#some-syntax-sugars">Some syntax sugars</a></h2>
 <p>Field init shorthand:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn build_user(email: String, username: String) -&gt; User {
     User {
@@ -186,7 +190,8 @@ user1.email = String::from(&quot;anotheremail@example.com&quot;);
 <span class="boring">}
 </span></code></pre></pre>
 <p>Stuct update syntax:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let user2 = User {
     email: String::from(&quot;another@example.com&quot;),
@@ -200,7 +205,8 @@ user1.email = String::from(&quot;anotheremail@example.com&quot;);
 structs. Tuple structs have the added meaning the struct name provides
 but don’t have names associated with their fields; rather, they just
 have the types of the fields.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
@@ -250,7 +256,8 @@ parameter. These are called associated functions because they’re
 associated with the struct.</p>
 <p>Associated functions are often used for constructors that will return
 a new instance of the struct:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl Rectangle {
     fn square(size: u32) -&gt; Rectangle {

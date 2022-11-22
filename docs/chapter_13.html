@@ -136,7 +136,8 @@
                     <main>
                         <h1 id="chapter-13---functional-language-features-iterators-and-closures"><a class="header" href="#chapter-13---functional-language-features-iterators-and-closures">Chapter 13 - Functional Language Features: Iterators and Closures</a></h1>
 <h2 id="motivation-for-closure"><a class="header" href="#motivation-for-closure">Motivation for Closure</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generate_workout(intensity: u32, random_number: u32) {
     if intensity &lt; 25 {
@@ -163,7 +164,8 @@
 </span></code></pre></pre>
 <p>Cons: In the above function, you call <code>simulated_expensive_calculation</code>
 twice in the first if block. Let's improve it:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generate_workout(intensity: u32, random_number: u32) {
     let expensive_result =
@@ -196,7 +198,8 @@ only once. Unfortantely for cases where <code>intensity &gt;= 25 &amp;&amp; rand
 although it isn't required. Let's use closures here.</p>
 <p>To define a closure, we start with a pair of vertical pipes (<code>|</code>),
 inside which we specify the parameters to the closure:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generate_workout(intensity: u32, random_number: u32) {
     let expensive_closure = |num| {
@@ -237,7 +240,8 @@ finding out solution to the above problem.</p>
 the return value like <code>fn</code> functions do. But we can add type
 annotations if we want to increase explicitness and clarity at the
 cost of being more verbose than is strictly necessary.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let expensive_closure = |num: u32| -&gt; u32 {
     println!(&quot;calculating slowly...&quot;);
@@ -249,7 +253,8 @@ cost of being more verbose than is strictly necessary.</p>
 <p>Closure definitions will have one concrete type inferred for each of
 their parameters and for their return value. The following code won't
 compile:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let example_closure = |x| x;
 
@@ -268,7 +273,8 @@ type: that is, even if two closures have the same signature, their
 types are still considered different.</p>
 <p>The <code>Fn</code> traits are provided by the standard library. All closures
 implement at least one of the traits: <code>Fn</code>, <code>FnMut</code>, or <code>FnOnce</code>.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Cacher&lt;T&gt;
     where T: Fn(u32) -&gt; u32
@@ -283,7 +289,8 @@ trait bounds on T specify that it’s a closure by using the Fn
 trait. Any closure we want to store in the <code>calculation</code> field must have
 one <code>u32</code> parameter (specified within the parentheses after <code>Fn</code>) and must
 return a <code>u32</code> (specified after the <code>-&gt;</code>).</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T&gt; Cacher&lt;T&gt;
     where T: Fn(u32) -&gt; u32
@@ -309,7 +316,8 @@ return a <code>u32</code> (specified after the <code>-&gt;</code>).</p>
 <span class="boring">}
 </span></code></pre></pre>
 <p>And now the implementation:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generate_workout(intensity: u32, random_number: u32) {
     let mut expensive_result = Cacher::new(|num| {
@@ -344,7 +352,8 @@ return a <code>u32</code> (specified after the <code>-&gt;</code>).</p>
 discussed above. The function is computed only once when required.</p>
 <p>But there is a problem with the above implementation. The code will
 fail (obviously) for this scenario:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
 fn call_with_different_values() {
@@ -562,21 +571,24 @@ the different type signature.</p>
 <p>Note that <code>v4</code> style is not recommened. Uncommenting the line will
 result in compile error because <code>v5</code> has a mutuable borrow on <code>v1</code>.</p>
 <p>Different filter variations:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let v1: Vec&lt;i32&gt; = vec![1, 2, 3];
 let v2: Vec&lt;i32&gt; = v1.into_iter().filter(|x| *x == 2).collect();
 println!(&quot;{:?}&quot;, v2);
 <span class="boring">}
 </span></code></pre></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let v1: Vec&lt;i32&gt; = vec![1, 2, 3];
 let v2: Vec&lt;&amp;i32&gt; = v1.iter().filter(|&amp;x| *x == 2).collect();
 println!(&quot;{:?}&quot;, v2);
 <span class="boring">}
 </span></code></pre></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut v1: Vec&lt;i32&gt; = vec![1, 2, 3];
 let v2: Vec&lt;&amp;mut i32&gt; = v1.iter_mut().filter(|x| **x == 2).collect();

@@ -155,7 +155,8 @@ stack because you have to follow a pointer to get there.</li>
 <li>This type is stored on heap.</li>
 <li>Can be mutated.</li>
 </ul>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>{
     let s1 = String::from(&quot;hello&quot;); // s1 is valid from this point forward
@@ -174,7 +175,8 @@ automatically at the closing curly bracket.</p>
 </blockquote>
 <p><img src="./images/ownership1.png" alt="Representation of s1 in memory" /></p>
 <h2 id="ways-variable-and-data-interact"><a class="header" href="#ways-variable-and-data-interact">Ways Variable and Data interact</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = 5;
 let y = x;
@@ -187,7 +189,8 @@ value in x and bind it to y.</li>
 size, and these two 5 values are pushed onto the stack.</li>
 </ul>
 <p>Now let's look at the <code>String</code> version:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s1 = String::from(&quot;hello&quot;);
 let s2 = s1;
@@ -267,7 +270,8 @@ fn change(some_string: &amp;mut String) {
 <p>But mutable references have one big restriction: you can have only one
 mutable reference to a particular piece of data in a particular
 scope. This code will fail:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut s = String::from(&quot;hello&quot;);
 
@@ -278,7 +282,8 @@ let r2 = &amp;mut s;
 <p>The benefit of having this restriction is that Rust can prevent data
 races at compile time. A similar rule exists for combining mutable and
 immutable references:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut s = String::from(&quot;hello&quot;);
 
@@ -291,7 +296,8 @@ let r3 = &amp;mut s; // BIG PROBLEM
 <p>Another data type that does not have ownership (the other one is
 references) is the slice.</p>
 <h3 id="string-slices"><a class="header" href="#string-slices">String Slices</a></h3>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s = String::from(&quot;hello world&quot;);
 
@@ -304,7 +310,8 @@ let world = &amp;s[6..11];
 position in the slice and ending_index is one more than the last
 position in the slice.</p>
 <p>Other examples:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s = String::from(&quot;hello&quot;);
 
@@ -312,7 +319,8 @@ let slice = &amp;s[0..2];
 let slice = &amp;s[..2];
 <span class="boring">}
 </span></code></pre></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s = String::from(&quot;hello&quot;);
 
@@ -322,7 +330,8 @@ let slice = &amp;s[3..len];
 let slice = &amp;s[3..];
 <span class="boring">}
 </span></code></pre></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s = String::from(&quot;hello&quot;);
 
@@ -333,7 +342,8 @@ let slice = &amp;s[..];
 <span class="boring">}
 </span></code></pre></pre>
 <p>The type that signifies “string slice” is written as &amp;str:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn first_word(s: &amp;String) -&gt; &amp;str {
     let bytes = s.as_bytes();
@@ -349,7 +359,8 @@ let slice = &amp;s[..];
 <span class="boring">}
 </span></code></pre></pre>
 <h3 id="other-slices"><a class="header" href="#other-slices">Other Slices</a></h3>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let a = [1, 2, 3, 4, 5];
 

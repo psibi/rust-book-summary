@@ -223,7 +223,8 @@ fn main() {
 }
 </code></pre></pre>
 <p>The implementation for the above behavior:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub struct Post {
     state: Option&lt;Box&lt;dyn State&gt;&gt;,

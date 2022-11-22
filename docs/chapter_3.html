@@ -146,7 +146,8 @@ result of a function call or any other value that could only be
 computed at runtime.</li>
 </ul>
 <p>Example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const MAX_POINTS: u32 = 100_000;
 <span class="boring">}
@@ -190,7 +191,8 @@ because arrays in Rust have a fixed length, like tuples.</p>
 <pre><code>let a: [i32; 5] = [1, 2, 3, 4, 5];
 </code></pre>
 <p>Another way of writing arrays:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let a = [3; 5];
 let b = [3, 3, 3, 3, 3]; // equivalent as a array
@@ -226,7 +228,8 @@ fn plus_one(x: i32) -&gt; i32 {
 }
 </code></pre></pre>
 <h3 id="loop-construct"><a class="header" href="#loop-construct">loop construct</a></h3>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>loop {
   println!(&quot;again!&quot;);
@@ -234,7 +237,8 @@ fn plus_one(x: i32) -&gt; i32 {
 <span class="boring">}
 </span></code></pre></pre>
 <h3 id="while-loop"><a class="header" href="#while-loop">while loop</a></h3>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>while number != 0 {
      println!(&quot;{}!&quot;, number);

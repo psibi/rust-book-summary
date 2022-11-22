@@ -165,7 +165,8 @@ readability and easy reuse. Modules also control the privacy of items,
 which is whether an item can be used by outside code (public) or
 whether it’s an internal implementation detail and not available for
 outside use (private).</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>$ cargo new --lib restaurant
 $ cat src/lib.rs
@@ -200,7 +201,8 @@ or an identifier in the current module.</li>
 </ul>
 <p>Both absolute and relative paths are followed by one or more
 identifiers separated by double colons (::).</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod front_of_house {
     pub mod hosting {
@@ -221,7 +223,8 @@ pub fn eat_at_restaurant() {
 <h2 id="super-keyword"><a class="header" href="#super-keyword">super keyword</a></h2>
 <p>We can also construct relative paths that begin in the parent module
 by using super at the start of the path. Example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn serve_order() {}
 
@@ -244,7 +247,8 @@ public.</p>
 <h2 id="bringing-paths-into-scope-with-the-use-keyword"><a class="header" href="#bringing-paths-into-scope-with-the-use-keyword">Bringing Paths into Scope with the use keyword</a></h2>
 <p>We can bring a path into a scope once and then call the items in that
 path as if they’re local items with the use keyword.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod front_of_house {
     pub mod hosting {
@@ -264,7 +268,8 @@ pub fn eat_at_restaurant() {
 <p>Specifying a relative path with use is slightly different. Instead of
 starting from a name in the current scope, we must start the path
 given to use with the keyword <code>self</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod front_of_house {
     pub mod hosting {
@@ -287,7 +292,8 @@ pub fn eat_at_restaurant() {
 <p>and don't need to qualify. But that isn't considered good practice for
 functions (For structs and enum it is fine).</p>
 <h2 id="providing-new-names-with-the-as-keyword"><a class="header" href="#providing-new-names-with-the-as-keyword">Providing New Names with the as Keyword</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fmt::Result;
 use std::io::Result as IoResult;
@@ -306,7 +312,8 @@ our code to refer to that name as if it had been defined in that
 code’s scope, we can combine pub and use. This technique is called
 re-exporting because we’re bringing an item into scope but also making
 that item available for others to bring into their scope.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod front_of_house {
     pub mod hosting {
@@ -335,33 +342,38 @@ rand = &quot;0.5.5&quot;
 </code></pre>
 <h2 id="using-nested-paths-to-clean-up-large-use-lists"><a class="header" href="#using-nested-paths-to-clean-up-large-use-lists">Using Nested Paths to Clean Up Large use Lists</a></h2>
 <p>This code:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::cmp::Ordering;
 use std::io;
 <span class="boring">}
 </span></code></pre></pre>
 <p>is same as:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::{cmp::Ordering, io};
 <span class="boring">}
 </span></code></pre></pre>
 <p>Similarly, this code:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::io;
 use std::io::Write;
 <span class="boring">}
 </span></code></pre></pre>
 <p>is same as:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::io::{self, Write};
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="the-glob-operator"><a class="header" href="#the-glob-operator">The Glob Operator</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::collections::*;
 <span class="boring">}
@@ -369,7 +381,8 @@ use std::io::Write;
 <p>this brings all public items defined in a path into scope.</p>
 <h2 id="separating-modules-into-different-files"><a class="header" href="#separating-modules-into-different-files">Separating modules into Different files</a></h2>
 <p>In <code>src/lib.rs</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod front_of_house;
 
@@ -383,7 +396,8 @@ pub fn eat_at_restaurant() {
 <span class="boring">}
 </span></code></pre></pre>
 <p>In <code>src/front_of_house.rs</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub mod hosting {
     pub fn add_to_waitlist() {}

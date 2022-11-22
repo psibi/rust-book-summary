@@ -164,7 +164,8 @@ location</li>
 <li>Don’t implement any automatic cleanup</li>
 </ul>
 <p>Example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut num = 5;
 
@@ -178,7 +179,8 @@ unsafe {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Another example which will likely lead to segmentation fault:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let address = 0x012345usize;
 let r = address as *const i32;
@@ -186,7 +188,8 @@ let r = address as *const i32;
 </span></code></pre></pre>
 <h3 id="calling-an-unsafe-function-or-method"><a class="header" href="#calling-an-unsafe-function-or-method">Calling an Unsafe Function or method</a></h3>
 <p>Example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>unsafe fn dangerous() {}
 
@@ -250,7 +253,8 @@ fn main() {
 that the compiler can’t verify. We can declare that a trait is unsafe
 by adding the unsafe keyword before trait and marking the
 implementation of the trait as unsafe too.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>unsafe trait Foo {
     // methods go here
@@ -266,7 +270,8 @@ unsafe impl Foo for i32 {
 <p>Associated types connect a type placeholder with a trait such that the
 trait method definitions can use these placeholder types in their
 signatures.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub trait Iterator {
     type Item;
@@ -276,7 +281,8 @@ signatures.</p>
 <span class="boring">}
 </span></code></pre></pre>
 <p>And it's implementation:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl Iterator for Counter {
     type Item = u32;
@@ -290,7 +296,8 @@ signatures.</p>
 type for the generic type. . The syntax for specifying a default type
 for a generic type is <code>&lt;PlaceholderType=ConcreteType&gt;</code> when declaring
 the generic type.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Add&lt;RHS=Self&gt; {
     type Output;
@@ -308,7 +315,8 @@ as +) in particular situations.</p>
 arbitrary operators. But you can overload the operations and
 corresponding traits listed in <code>std::ops</code> by implementing the traits
 associated with the operator.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::ops::Add;
 
@@ -389,7 +397,8 @@ fn main() {
 functionality. In this case, you need to rely on the dependent trait
 also being implemented. The trait you rely on is a supertrait of the
 trait you’re implementing.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fmt;
 
@@ -433,7 +442,8 @@ in a newtype.</p>
 <h3 id="creating-type-synonyms-with-type-aliases"><a class="header" href="#creating-type-synonyms-with-type-aliases">Creating Type Synonyms with Type Aliases</a></h3>
 <p>Rust provides the ability to declare a type alias to give an existing
 type another name. For this we use the <code>type</code> keyword.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>type Kilometers = i32;
 <span class="boring">}
@@ -443,7 +453,8 @@ type another name. For this we use the <code>type</code> keyword.</p>
 the empty type because it has no values. We prefer to call it the
 never type because it stands in the place of the return type when a
 function will never return.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn bar() -&gt; ! {
     // --snip--
@@ -452,7 +463,8 @@ function will never return.</p>
 </span></code></pre></pre>
 <p>Functions that return never are called diverging functions.</p>
 <p>Example usage:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let guess: u32 = match guess.trim().parse() {
     Ok(num) =&gt; num,
@@ -465,7 +477,8 @@ function will never return.</p>
 <p>Dynamically sized types or DSTs or unsized types let us write code
 using values whose size we can know only at runtime.</p>
 <p>The following code won't compile:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s1: str = &quot;Hello there!&quot;;
 let s2: str = &quot;How's it going?&quot;;
@@ -486,7 +499,8 @@ address of the str and its length. As such, we can know the size of a
 <p>To work with DSTs, Rust has a particular trait called the <code>Sized</code> trait
 to determine whether or not a type’s size is known at compile time.</p>
 <p>That is, a generic function definition like this:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generic&lt;T&gt;(t: T) {
     // --snip--
@@ -494,7 +508,8 @@ to determine whether or not a type’s size is known at compile time.</p>
 <span class="boring">}
 </span></code></pre></pre>
 <p>is actually treated as though we had written this:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generic&lt;T: Sized&gt;(t: T) {
     // --snip--
@@ -504,7 +519,8 @@ to determine whether or not a type’s size is known at compile time.</p>
 <p>By default, generic functions will work only on types that have a
 known size at compile time. However, you can use the following special
 syntax to relax this restriction:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generic&lt;T: ?Sized&gt;(t: &amp;T) {
     // --snip--
@@ -542,7 +558,8 @@ functions can accept either functions or closures.</p>
 <h3 id="returning-closures"><a class="header" href="#returning-closures">Returning Closures</a></h3>
 <p>Closures are represented by traits, which means you can’t return
 closures directly. A way to make it work:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn returns_closure() -&gt; Box&lt;dyn Fn(i32) -&gt; i32&gt; {
     Box::new(|x| x + 1)

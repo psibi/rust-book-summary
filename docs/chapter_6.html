@@ -136,7 +136,8 @@
                     <main>
                         <h1 id="chapter-6---enums-and-pattern-matching"><a class="header" href="#chapter-6---enums-and-pattern-matching">Chapter 6 - Enums and Pattern matching</a></h1>
 <p>Example code:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Message {
     Quit,
@@ -156,7 +157,8 @@ m.call();
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="option-type"><a class="header" href="#option-type">Option type</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Option&lt;T&gt; {
     Some(T),
@@ -165,7 +167,8 @@ m.call();
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="match-control-flow-operator"><a class="header" href="#match-control-flow-operator"><code>match</code> Control Flow Operator</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[derive(Debug)] // so we can inspect the state in a minute
 enum UsState {
@@ -195,7 +198,8 @@ fn value_in_cents(coin: Coin) -&gt; u8 {
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="matching-with-option"><a class="header" href="#matching-with-option">Matching with Option<T></a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn plus_one(x: Option&lt;i32&gt;) -&gt; Option&lt;i32&gt; {
     match x {
@@ -207,7 +211,8 @@ fn value_in_cents(coin: Coin) -&gt; u8 {
 </span></code></pre></pre>
 <h2 id="if-let"><a class="header" href="#if-let">if let</a></h2>
 <p>This code:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let some_u8_value = Some(0u8);
 match some_u8_value {
@@ -217,7 +222,8 @@ match some_u8_value {
 <span class="boring">}
 </span></code></pre></pre>
 <p>can be written as:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>if let Some(3) = some_u8_value {
     println!(&quot;three&quot;);

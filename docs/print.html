@@ -147,13 +147,15 @@ welcome!</p>
 <li><a href="https://www.rust-lang.org/tools/install">Installation</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-2---programming-a-guessing-game"><a class="header" href="#chapter-2---programming-a-guessing-game">Chapter 2 - Programming a Guessing game</a></h1>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut guess = String::new();
 <span class="boring">}
 </span></code></pre></pre>
 <p>let statement is used to create a variable.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let foo = 5; // immutable
 let mut bar = 5; // mutable
@@ -215,7 +217,8 @@ result of a function call or any other value that could only be
 computed at runtime.</li>
 </ul>
 <p>Example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>const MAX_POINTS: u32 = 100_000;
 <span class="boring">}
@@ -259,7 +262,8 @@ because arrays in Rust have a fixed length, like tuples.</p>
 <pre><code>let a: [i32; 5] = [1, 2, 3, 4, 5];
 </code></pre>
 <p>Another way of writing arrays:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let a = [3; 5];
 let b = [3, 3, 3, 3, 3]; // equivalent as a array
@@ -295,7 +299,8 @@ fn plus_one(x: i32) -&gt; i32 {
 }
 </code></pre></pre>
 <h3 id="loop-construct"><a class="header" href="#loop-construct">loop construct</a></h3>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>loop {
   println!(&quot;again!&quot;);
@@ -303,7 +308,8 @@ fn plus_one(x: i32) -&gt; i32 {
 <span class="boring">}
 </span></code></pre></pre>
 <h3 id="while-loop"><a class="header" href="#while-loop">while loop</a></h3>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>while number != 0 {
      println!(&quot;{}!&quot;, number);
@@ -342,7 +348,8 @@ stack because you have to follow a pointer to get there.</li>
 <li>This type is stored on heap.</li>
 <li>Can be mutated.</li>
 </ul>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>{
     let s1 = String::from(&quot;hello&quot;); // s1 is valid from this point forward
@@ -361,7 +368,8 @@ automatically at the closing curly bracket.</p>
 </blockquote>
 <p><img src="./images/ownership1.png" alt="Representation of s1 in memory" /></p>
 <h2 id="ways-variable-and-data-interact"><a class="header" href="#ways-variable-and-data-interact">Ways Variable and Data interact</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = 5;
 let y = x;
@@ -374,7 +382,8 @@ value in x and bind it to y.</li>
 size, and these two 5 values are pushed onto the stack.</li>
 </ul>
 <p>Now let's look at the <code>String</code> version:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s1 = String::from(&quot;hello&quot;);
 let s2 = s1;
@@ -454,7 +463,8 @@ fn change(some_string: &amp;mut String) {
 <p>But mutable references have one big restriction: you can have only one
 mutable reference to a particular piece of data in a particular
 scope. This code will fail:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut s = String::from(&quot;hello&quot;);
 
@@ -465,7 +475,8 @@ let r2 = &amp;mut s;
 <p>The benefit of having this restriction is that Rust can prevent data
 races at compile time. A similar rule exists for combining mutable and
 immutable references:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut s = String::from(&quot;hello&quot;);
 
@@ -478,7 +489,8 @@ let r3 = &amp;mut s; // BIG PROBLEM
 <p>Another data type that does not have ownership (the other one is
 references) is the slice.</p>
 <h3 id="string-slices"><a class="header" href="#string-slices">String Slices</a></h3>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s = String::from(&quot;hello world&quot;);
 
@@ -491,7 +503,8 @@ let world = &amp;s[6..11];
 position in the slice and ending_index is one more than the last
 position in the slice.</p>
 <p>Other examples:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s = String::from(&quot;hello&quot;);
 
@@ -499,7 +512,8 @@ let slice = &amp;s[0..2];
 let slice = &amp;s[..2];
 <span class="boring">}
 </span></code></pre></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s = String::from(&quot;hello&quot;);
 
@@ -509,7 +523,8 @@ let slice = &amp;s[3..len];
 let slice = &amp;s[3..];
 <span class="boring">}
 </span></code></pre></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s = String::from(&quot;hello&quot;);
 
@@ -520,7 +535,8 @@ let slice = &amp;s[..];
 <span class="boring">}
 </span></code></pre></pre>
 <p>The type that signifies “string slice” is written as &amp;str:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn first_word(s: &amp;String) -&gt; &amp;str {
     let bytes = s.as_bytes();
@@ -536,7 +552,8 @@ let slice = &amp;s[..];
 <span class="boring">}
 </span></code></pre></pre>
 <h3 id="other-slices"><a class="header" href="#other-slices">Other Slices</a></h3>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let a = [1, 2, 3, 4, 5];
 
@@ -548,7 +565,8 @@ let slice = &amp;a[1..3];
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-5---using-structs"><a class="header" href="#chapter-5---using-structs">Chapter 5 - Using Structs</a></h1>
 <p>To define a struct, we enter the keyword struct and name the entire
 struct.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct User {
     username: String,
@@ -559,7 +577,8 @@ struct.</p>
 <span class="boring">}
 </span></code></pre></pre>
 <p>Immutable instance of the Struct:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let user1 = User {
     email: String::from(&quot;someone@example.com&quot;),
@@ -570,7 +589,8 @@ struct.</p>
 <span class="boring">}
 </span></code></pre></pre>
 <p>Mutuable instance of the Struct:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut user1 = User {
     email: String::from(&quot;someone@example.com&quot;),
@@ -584,7 +604,8 @@ user1.email = String::from(&quot;anotheremail@example.com&quot;);
 </span></code></pre></pre>
 <h2 id="some-syntax-sugars"><a class="header" href="#some-syntax-sugars">Some syntax sugars</a></h2>
 <p>Field init shorthand:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn build_user(email: String, username: String) -&gt; User {
     User {
@@ -597,7 +618,8 @@ user1.email = String::from(&quot;anotheremail@example.com&quot;);
 <span class="boring">}
 </span></code></pre></pre>
 <p>Stuct update syntax:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let user2 = User {
     email: String::from(&quot;another@example.com&quot;),
@@ -611,7 +633,8 @@ user1.email = String::from(&quot;anotheremail@example.com&quot;);
 structs. Tuple structs have the added meaning the struct name provides
 but don’t have names associated with their fields; rather, they just
 have the types of the fields.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
@@ -661,7 +684,8 @@ parameter. These are called associated functions because they’re
 associated with the struct.</p>
 <p>Associated functions are often used for constructors that will return
 a new instance of the struct:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl Rectangle {
     fn square(size: u32) -&gt; Rectangle {
@@ -674,7 +698,8 @@ a new instance of the struct:</p>
 name; <code>let sq = Rectangle::square(3);</code> is an example.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-6---enums-and-pattern-matching"><a class="header" href="#chapter-6---enums-and-pattern-matching">Chapter 6 - Enums and Pattern matching</a></h1>
 <p>Example code:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Message {
     Quit,
@@ -694,7 +719,8 @@ m.call();
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="option-type"><a class="header" href="#option-type">Option type</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Option&lt;T&gt; {
     Some(T),
@@ -703,7 +729,8 @@ m.call();
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="match-control-flow-operator"><a class="header" href="#match-control-flow-operator"><code>match</code> Control Flow Operator</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[derive(Debug)] // so we can inspect the state in a minute
 enum UsState {
@@ -733,7 +760,8 @@ fn value_in_cents(coin: Coin) -&gt; u8 {
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="matching-with-option"><a class="header" href="#matching-with-option">Matching with Option<T></a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn plus_one(x: Option&lt;i32&gt;) -&gt; Option&lt;i32&gt; {
     match x {
@@ -745,7 +773,8 @@ fn value_in_cents(coin: Coin) -&gt; u8 {
 </span></code></pre></pre>
 <h2 id="if-let"><a class="header" href="#if-let">if let</a></h2>
 <p>This code:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let some_u8_value = Some(0u8);
 match some_u8_value {
@@ -755,7 +784,8 @@ match some_u8_value {
 <span class="boring">}
 </span></code></pre></pre>
 <p>can be written as:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>if let Some(3) = some_u8_value {
     println!(&quot;three&quot;);
@@ -794,7 +824,8 @@ readability and easy reuse. Modules also control the privacy of items,
 which is whether an item can be used by outside code (public) or
 whether it’s an internal implementation detail and not available for
 outside use (private).</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>$ cargo new --lib restaurant
 $ cat src/lib.rs
@@ -829,7 +860,8 @@ or an identifier in the current module.</li>
 </ul>
 <p>Both absolute and relative paths are followed by one or more
 identifiers separated by double colons (::).</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod front_of_house {
     pub mod hosting {
@@ -850,7 +882,8 @@ pub fn eat_at_restaurant() {
 <h2 id="super-keyword"><a class="header" href="#super-keyword">super keyword</a></h2>
 <p>We can also construct relative paths that begin in the parent module
 by using super at the start of the path. Example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn serve_order() {}
 
@@ -873,7 +906,8 @@ public.</p>
 <h2 id="bringing-paths-into-scope-with-the-use-keyword"><a class="header" href="#bringing-paths-into-scope-with-the-use-keyword">Bringing Paths into Scope with the use keyword</a></h2>
 <p>We can bring a path into a scope once and then call the items in that
 path as if they’re local items with the use keyword.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod front_of_house {
     pub mod hosting {
@@ -893,7 +927,8 @@ pub fn eat_at_restaurant() {
 <p>Specifying a relative path with use is slightly different. Instead of
 starting from a name in the current scope, we must start the path
 given to use with the keyword <code>self</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod front_of_house {
     pub mod hosting {
@@ -916,7 +951,8 @@ pub fn eat_at_restaurant() {
 <p>and don't need to qualify. But that isn't considered good practice for
 functions (For structs and enum it is fine).</p>
 <h2 id="providing-new-names-with-the-as-keyword"><a class="header" href="#providing-new-names-with-the-as-keyword">Providing New Names with the as Keyword</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fmt::Result;
 use std::io::Result as IoResult;
@@ -935,7 +971,8 @@ our code to refer to that name as if it had been defined in that
 code’s scope, we can combine pub and use. This technique is called
 re-exporting because we’re bringing an item into scope but also making
 that item available for others to bring into their scope.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod front_of_house {
     pub mod hosting {
@@ -964,33 +1001,38 @@ rand = &quot;0.5.5&quot;
 </code></pre>
 <h2 id="using-nested-paths-to-clean-up-large-use-lists"><a class="header" href="#using-nested-paths-to-clean-up-large-use-lists">Using Nested Paths to Clean Up Large use Lists</a></h2>
 <p>This code:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::cmp::Ordering;
 use std::io;
 <span class="boring">}
 </span></code></pre></pre>
 <p>is same as:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::{cmp::Ordering, io};
 <span class="boring">}
 </span></code></pre></pre>
 <p>Similarly, this code:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::io;
 use std::io::Write;
 <span class="boring">}
 </span></code></pre></pre>
 <p>is same as:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::io::{self, Write};
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="the-glob-operator"><a class="header" href="#the-glob-operator">The Glob Operator</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::collections::*;
 <span class="boring">}
@@ -998,7 +1040,8 @@ use std::io::Write;
 <p>this brings all public items defined in a path into scope.</p>
 <h2 id="separating-modules-into-different-files"><a class="header" href="#separating-modules-into-different-files">Separating modules into Different files</a></h2>
 <p>In <code>src/lib.rs</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>mod front_of_house;
 
@@ -1012,7 +1055,8 @@ pub fn eat_at_restaurant() {
 <span class="boring">}
 </span></code></pre></pre>
 <p>In <code>src/front_of_house.rs</code>:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub mod hosting {
     pub fn add_to_waitlist() {}
@@ -1032,7 +1076,8 @@ the same name as the module.</p>
 <li>Puts all the value next to each other in the memory.</li>
 </ul>
 <p>Example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let v: Vec&lt;i32&gt; = Vec::new();
 let v = vec![1, 2, 3]; // Macro style
@@ -1059,7 +1104,8 @@ for i in &amp;mut v {
 </span></code></pre></pre>
 <h2 id="strings"><a class="header" href="#strings">Strings</a></h2>
 <p>Example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut s = String::new();
 
@@ -1070,7 +1116,8 @@ s.push_str(&quot;bar&quot;);
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="hashmap"><a class="header" href="#hashmap">HashMap</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::collections::HashMap;
 
@@ -1087,7 +1134,8 @@ let score = scores.get(&amp;team_name);
 <p>For types that implement the Copy trait, like i32, the values are
 copied into the hash map. For owned values like String, the values
 will be moved and the hash map will be the owner of those values.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::collections::HashMap;
 
@@ -1119,7 +1167,8 @@ this to <code>cargol.toml</code>:</p>
 panic = 'abort'
 </code></pre>
 <h2 id="recoverable-errors-with-result"><a class="header" href="#recoverable-errors-with-result">Recoverable errors with Result</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Result&lt;T, E&gt; {
     Ok(T),
@@ -1149,7 +1198,8 @@ fn main() {
 }
 </code></pre></pre>
 <h2 id="propagating-errors"><a class="header" href="#propagating-errors">Propagating errors</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::io;
 use std::io::Read;
@@ -1173,7 +1223,8 @@ fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
 <span class="boring">}
 </span></code></pre></pre>
 <p>The above code can be written as:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::io;
 use std::io::Read;
@@ -1208,7 +1259,8 @@ fn main() {
 }
 </code></pre></pre>
 <h2 id="enum-structs"><a class="header" href="#enum-structs">Enum Structs</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Option&lt;T&gt; {
     Some(T),
@@ -1237,7 +1289,8 @@ fn main() {
 <h3 id="traits-defining-shared-behaviour"><a class="header" href="#traits-defining-shared-behaviour">Traits: Defining shared behaviour</a></h3>
 <p>A trait tells the Rust compiler about functionality a particular type
 has and can share with other types.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub struct Tweet {
     pub username: String,
@@ -1258,7 +1311,8 @@ impl Summary for Tweet {
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="default-implementations"><a class="header" href="#default-implementations">Default implementations</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub trait Summary {
     fn summarize(&amp;self) -&gt; String {
@@ -1268,13 +1322,15 @@ impl Summary for Tweet {
 <span class="boring">}
 </span></code></pre></pre>
 <p>To use a default implementation:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl Summary for Tweet {}
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="traits-as-parameters"><a class="header" href="#traits-as-parameters">Traits as Parameters</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub fn notify(item: impl Summary) {
     println!(&quot;Breaking news! {}&quot;, item.summarize());
@@ -1285,7 +1341,8 @@ impl Summary for Tweet {
 <p>The <code>impl Trait</code> syntax in the above example works for straightforward
 cases. It is actually a syntax sugar for a longer form which is called
 a trait bound:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub fn notify&lt;T: Summary&gt;(item: T) {
     println!(&quot;Breaking news! {}&quot;, item.summarize());
@@ -1293,25 +1350,29 @@ a trait bound:</p>
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="specifying-multiple-trait-bounds-with-the--syntax"><a class="header" href="#specifying-multiple-trait-bounds-with-the--syntax">Specifying Multiple Trait Bounds with the + Syntax</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub fn notify(item: impl Summary + Display) {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Or in the trait bound syntax form:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub fn notify&lt;T: Summary + Display&gt;(item: T) {
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="clearer-trait-bounds-with-where-clauses"><a class="header" href="#clearer-trait-bounds-with-where-clauses">Clearer Trait Bounds with where Clauses</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_function&lt;T: Display + Clone, U: Clone + Debug&gt;(t: T, u: U) -&gt; i32 {
 <span class="boring">}
 </span></code></pre></pre>
 <p>can be written as:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_function&lt;T, U&gt;(t: T, u: U) -&gt; i32
     where T: Display + Clone,
@@ -1320,7 +1381,8 @@ a trait bound:</p>
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="returning-types-that-implement-traits"><a class="header" href="#returning-types-that-implement-traits">Returning Types that Implement Traits</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn returns_summarizable() -&gt; impl Summary {
     Tweet {
@@ -1338,7 +1400,8 @@ that reference is valid.</p>
 <h2 id="the-borrow-checker"><a class="header" href="#the-borrow-checker">The Borrow Checker</a></h2>
 <p>The Rust compiler has a borrow checker that compares scopes to
 determine whether all borrows are valid.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>{
     let r;                // ---------+-- 'a
@@ -1361,7 +1424,8 @@ because 'b is shorter than 'a: the subject of the reference doesn’t
 live as long as the reference.</p>
 <h2 id="generic-lifetimes-in-functions"><a class="header" href="#generic-lifetimes-in-functions">Generic Lifetimes in Functions</a></h2>
 <p>This code will result in compile error:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn longest(x: &amp;str, y: &amp;str) -&gt; &amp;str {
     if x.len() &gt; y.len() {
@@ -1396,7 +1460,8 @@ all lowercase and very short, like generic types. Most people use the
 name 'a. We place lifetime parameter annotations after the &amp; of a
 reference, using a space to separate the annotation from the
 reference’s type.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>&amp;i32        // a reference
 &amp;'a i32     // a reference with an explicit lifetime
@@ -1407,7 +1472,8 @@ reference’s type.</p>
 <p>As with generic type parameters, we need to declare generic lifetime
 parameters inside angle brackets between the function name and the
 parameter list.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;'a str) -&gt; &amp;'a str {
     if x.len() &gt; y.len() {
@@ -1422,7 +1488,8 @@ parameter list.</p>
 <p>So far, we’ve only defined structs to hold owned types. It’s possible
 for structs to hold references, but in that case we would need to add
 a lifetime annotation on every reference in the struct’s definition.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct ImportantExcerpt&lt;'a&gt; {
     part: &amp;'a str,
@@ -1434,7 +1501,8 @@ a lifetime annotation on every reference in the struct’s definition.</p>
 to specify lifetime parameters for functions or structs that use
 references. But there are some code which seem to compile without
 lifetime parameters:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn first_word(s: &amp;str) -&gt; &amp;str {
     let bytes = s.as_bytes();
@@ -1484,7 +1552,8 @@ write because fewer symbols are necessary.</li>
 <h2 id="lifetime-annotations-in-method-definitions"><a class="header" href="#lifetime-annotations-in-method-definitions">Lifetime Annotations in Method Definitions</a></h2>
 <p>When we implement methods on a struct with lifetimes, we use the same
 syntax as that of generic type parameters:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;'a&gt; ImportantExcerpt&lt;'a&gt; {
     fn level(&amp;self) -&gt; i32 {
@@ -1497,7 +1566,8 @@ syntax as that of generic type parameters:</p>
 type name are required, but we’re not required to annotate the
 lifetime of the reference to <code>self</code> because of the first elision rule.</p>
 <p>Example where the third lifetime elision rule applies:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;'a&gt; ImportantExcerpt&lt;'a&gt; {
     fn announce_and_return_part(&amp;self, announcement: &amp;str) -&gt; &amp;str {
@@ -1517,7 +1587,8 @@ accounted for.</p>
 this reference can live for the entire duration of the program. All
 string literals have the <code>'static</code> lifetime, which we can annotate as
 follows:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s: &amp;'static str = &quot;I have a static lifetime.&quot;;
 <span class="boring">}
@@ -1528,7 +1599,8 @@ literals is <code>'static.</code></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-11---writing-automated-tests"><a class="header" href="#chapter-11---writing-automated-tests">Chapter 11 - Writing Automated Tests</a></h1>
 <p>At its simplest, a test in Rust is a function that’s annotated with
 the <code>test</code> attribute. Attributes are metadata about pieces of Rust code:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
 fn it_works() {
@@ -1547,7 +1619,8 @@ message as optional arguments to the <code>assert!</code>, <code>assert_eq!</cod
 <code>assert_ne!</code> macros. Any arguments specified after the one required
 argument to <code>assert!</code> or the two required arguments to <code>assert_eq!</code> and
 <code>assert_ne!</code> are passed along to the format! macro:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
 fn greeting_contains_name() {
@@ -1562,7 +1635,8 @@ fn greeting_contains_name() {
 <h2 id="checking-for-panics-with-should_panic"><a class="header" href="#checking-for-panics-with-should_panic">Checking for Panics with should_panic</a></h2>
 <p>We place the <code>#[should_panic]</code> attribute after the <code>#[test]</code> attribute and
 before the test function it applies to.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
 #[should_panic]
@@ -1575,7 +1649,8 @@ fn greater_than_100() {
 expected parameter to the <code>should_panic</code> attribute. The test harness
 will make sure that the failure message contains the provided text.</p>
 <h2 id="using-resultt-e-in-tests"><a class="header" href="#using-resultt-e-in-tests">Using Result&lt;T, E&gt; in Tests</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
 fn it_works() -&gt; Result&lt;(), String&gt; {
@@ -1626,7 +1701,8 @@ functions. Rust understands this naming convention and treats the
 <p>This is a I/O project and I won't be covering it here.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-13---functional-language-features-iterators-and-closures"><a class="header" href="#chapter-13---functional-language-features-iterators-and-closures">Chapter 13 - Functional Language Features: Iterators and Closures</a></h1>
 <h2 id="motivation-for-closure"><a class="header" href="#motivation-for-closure">Motivation for Closure</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generate_workout(intensity: u32, random_number: u32) {
     if intensity &lt; 25 {
@@ -1653,7 +1729,8 @@ functions. Rust understands this naming convention and treats the
 </span></code></pre></pre>
 <p>Cons: In the above function, you call <code>simulated_expensive_calculation</code>
 twice in the first if block. Let's improve it:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generate_workout(intensity: u32, random_number: u32) {
     let expensive_result =
@@ -1686,7 +1763,8 @@ only once. Unfortantely for cases where <code>intensity &gt;= 25 &amp;&amp; rand
 although it isn't required. Let's use closures here.</p>
 <p>To define a closure, we start with a pair of vertical pipes (<code>|</code>),
 inside which we specify the parameters to the closure:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generate_workout(intensity: u32, random_number: u32) {
     let expensive_closure = |num| {
@@ -1727,7 +1805,8 @@ finding out solution to the above problem.</p>
 the return value like <code>fn</code> functions do. But we can add type
 annotations if we want to increase explicitness and clarity at the
 cost of being more verbose than is strictly necessary.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let expensive_closure = |num: u32| -&gt; u32 {
     println!(&quot;calculating slowly...&quot;);
@@ -1739,7 +1818,8 @@ cost of being more verbose than is strictly necessary.</p>
 <p>Closure definitions will have one concrete type inferred for each of
 their parameters and for their return value. The following code won't
 compile:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let example_closure = |x| x;
 
@@ -1758,7 +1838,8 @@ type: that is, even if two closures have the same signature, their
 types are still considered different.</p>
 <p>The <code>Fn</code> traits are provided by the standard library. All closures
 implement at least one of the traits: <code>Fn</code>, <code>FnMut</code>, or <code>FnOnce</code>.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Cacher&lt;T&gt;
     where T: Fn(u32) -&gt; u32
@@ -1773,7 +1854,8 @@ trait bounds on T specify that it’s a closure by using the Fn
 trait. Any closure we want to store in the <code>calculation</code> field must have
 one <code>u32</code> parameter (specified within the parentheses after <code>Fn</code>) and must
 return a <code>u32</code> (specified after the <code>-&gt;</code>).</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T&gt; Cacher&lt;T&gt;
     where T: Fn(u32) -&gt; u32
@@ -1799,7 +1881,8 @@ return a <code>u32</code> (specified after the <code>-&gt;</code>).</p>
 <span class="boring">}
 </span></code></pre></pre>
 <p>And now the implementation:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generate_workout(intensity: u32, random_number: u32) {
     let mut expensive_result = Cacher::new(|num| {
@@ -1834,7 +1917,8 @@ return a <code>u32</code> (specified after the <code>-&gt;</code>).</p>
 discussed above. The function is computed only once when required.</p>
 <p>But there is a problem with the above implementation. The code will
 fail (obviously) for this scenario:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
 fn call_with_different_values() {
@@ -2052,21 +2136,24 @@ the different type signature.</p>
 <p>Note that <code>v4</code> style is not recommened. Uncommenting the line will
 result in compile error because <code>v5</code> has a mutuable borrow on <code>v1</code>.</p>
 <p>Different filter variations:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let v1: Vec&lt;i32&gt; = vec![1, 2, 3];
 let v2: Vec&lt;i32&gt; = v1.into_iter().filter(|x| *x == 2).collect();
 println!(&quot;{:?}&quot;, v2);
 <span class="boring">}
 </span></code></pre></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let v1: Vec&lt;i32&gt; = vec![1, 2, 3];
 let v2: Vec&lt;&amp;i32&gt; = v1.iter().filter(|&amp;x| *x == 2).collect();
 println!(&quot;{:?}&quot;, v2);
 <span class="boring">}
 </span></code></pre></pre>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut v1: Vec&lt;i32&gt; = vec![1, 2, 3];
 let v2: Vec&lt;&amp;mut i32&gt; = v1.iter_mut().filter(|x| **x == 2).collect();
@@ -2108,7 +2195,8 @@ by <code>cargo test</code>.</p>
 <p>Another style of doc comment, <code>//!</code>, adds documentation to the item that
 contains the comments rather than adding documentation to the items
 following the comments.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>//! # My Crate
 //!
@@ -2246,7 +2334,8 @@ fn main() {
 }
 </code></pre></pre>
 <p>This is the change required to make it compile:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::ops::Deref;
 
@@ -2543,7 +2632,8 @@ pointer, which returns an <code>Option&lt;Rc&lt;T&gt;&gt;</code>.</p>
 }
 </code></pre></pre>
 <p>Usecase for Weak:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Node {
     value: i32,
@@ -2796,7 +2886,8 @@ fn main() {
 }
 </code></pre></pre>
 <p>The implementation for the above behavior:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub struct Post {
     state: Option&lt;Box&lt;dyn State&gt;&gt;,
@@ -2927,7 +3018,8 @@ location</li>
 <li>Don’t implement any automatic cleanup</li>
 </ul>
 <p>Example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let mut num = 5;
 
@@ -2941,7 +3033,8 @@ unsafe {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Another example which will likely lead to segmentation fault:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let address = 0x012345usize;
 let r = address as *const i32;
@@ -2949,7 +3042,8 @@ let r = address as *const i32;
 </span></code></pre></pre>
 <h3 id="calling-an-unsafe-function-or-method"><a class="header" href="#calling-an-unsafe-function-or-method">Calling an Unsafe Function or method</a></h3>
 <p>Example:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>unsafe fn dangerous() {}
 
@@ -3013,7 +3107,8 @@ fn main() {
 that the compiler can’t verify. We can declare that a trait is unsafe
 by adding the unsafe keyword before trait and marking the
 implementation of the trait as unsafe too.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>unsafe trait Foo {
     // methods go here
@@ -3029,7 +3124,8 @@ unsafe impl Foo for i32 {
 <p>Associated types connect a type placeholder with a trait such that the
 trait method definitions can use these placeholder types in their
 signatures.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub trait Iterator {
     type Item;
@@ -3039,7 +3135,8 @@ signatures.</p>
 <span class="boring">}
 </span></code></pre></pre>
 <p>And it's implementation:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl Iterator for Counter {
     type Item = u32;
@@ -3053,7 +3150,8 @@ signatures.</p>
 type for the generic type. . The syntax for specifying a default type
 for a generic type is <code>&lt;PlaceholderType=ConcreteType&gt;</code> when declaring
 the generic type.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Add&lt;RHS=Self&gt; {
     type Output;
@@ -3071,7 +3169,8 @@ as +) in particular situations.</p>
 arbitrary operators. But you can overload the operations and
 corresponding traits listed in <code>std::ops</code> by implementing the traits
 associated with the operator.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::ops::Add;
 
@@ -3152,7 +3251,8 @@ fn main() {
 functionality. In this case, you need to rely on the dependent trait
 also being implemented. The trait you rely on is a supertrait of the
 trait you’re implementing.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fmt;
 
@@ -3196,7 +3296,8 @@ in a newtype.</p>
 <h3 id="creating-type-synonyms-with-type-aliases"><a class="header" href="#creating-type-synonyms-with-type-aliases">Creating Type Synonyms with Type Aliases</a></h3>
 <p>Rust provides the ability to declare a type alias to give an existing
 type another name. For this we use the <code>type</code> keyword.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>type Kilometers = i32;
 <span class="boring">}
@@ -3206,7 +3307,8 @@ type another name. For this we use the <code>type</code> keyword.</p>
 the empty type because it has no values. We prefer to call it the
 never type because it stands in the place of the return type when a
 function will never return.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn bar() -&gt; ! {
     // --snip--
@@ -3215,7 +3317,8 @@ function will never return.</p>
 </span></code></pre></pre>
 <p>Functions that return never are called diverging functions.</p>
 <p>Example usage:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let guess: u32 = match guess.trim().parse() {
     Ok(num) =&gt; num,
@@ -3228,7 +3331,8 @@ function will never return.</p>
 <p>Dynamically sized types or DSTs or unsized types let us write code
 using values whose size we can know only at runtime.</p>
 <p>The following code won't compile:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s1: str = &quot;Hello there!&quot;;
 let s2: str = &quot;How's it going?&quot;;
@@ -3249,7 +3353,8 @@ address of the str and its length. As such, we can know the size of a
 <p>To work with DSTs, Rust has a particular trait called the <code>Sized</code> trait
 to determine whether or not a type’s size is known at compile time.</p>
 <p>That is, a generic function definition like this:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generic&lt;T&gt;(t: T) {
     // --snip--
@@ -3257,7 +3362,8 @@ to determine whether or not a type’s size is known at compile time.</p>
 <span class="boring">}
 </span></code></pre></pre>
 <p>is actually treated as though we had written this:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generic&lt;T: Sized&gt;(t: T) {
     // --snip--
@@ -3267,7 +3373,8 @@ to determine whether or not a type’s size is known at compile time.</p>
 <p>By default, generic functions will work only on types that have a
 known size at compile time. However, you can use the following special
 syntax to relax this restriction:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generic&lt;T: ?Sized&gt;(t: &amp;T) {
     // --snip--
@@ -3305,7 +3412,8 @@ functions can accept either functions or closures.</p>
 <h3 id="returning-closures"><a class="header" href="#returning-closures">Returning Closures</a></h3>
 <p>Closures are represented by traits, which means you can’t return
 closures directly. A way to make it work:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn returns_closure() -&gt; Box&lt;dyn Fn(i32) -&gt; i32&gt; {
     Box::new(|x| x + 1)

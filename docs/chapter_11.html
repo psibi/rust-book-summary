@@ -137,7 +137,8 @@
                         <h1 id="chapter-11---writing-automated-tests"><a class="header" href="#chapter-11---writing-automated-tests">Chapter 11 - Writing Automated Tests</a></h1>
 <p>At its simplest, a test in Rust is a function that’s annotated with
 the <code>test</code> attribute. Attributes are metadata about pieces of Rust code:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
 fn it_works() {
@@ -156,7 +157,8 @@ message as optional arguments to the <code>assert!</code>, <code>assert_eq!</cod
 <code>assert_ne!</code> macros. Any arguments specified after the one required
 argument to <code>assert!</code> or the two required arguments to <code>assert_eq!</code> and
 <code>assert_ne!</code> are passed along to the format! macro:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
 fn greeting_contains_name() {
@@ -171,7 +173,8 @@ fn greeting_contains_name() {
 <h2 id="checking-for-panics-with-should_panic"><a class="header" href="#checking-for-panics-with-should_panic">Checking for Panics with should_panic</a></h2>
 <p>We place the <code>#[should_panic]</code> attribute after the <code>#[test]</code> attribute and
 before the test function it applies to.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
 #[should_panic]
@@ -184,7 +187,8 @@ fn greater_than_100() {
 expected parameter to the <code>should_panic</code> attribute. The test harness
 will make sure that the failure message contains the provided text.</p>
 <h2 id="using-resultt-e-in-tests"><a class="header" href="#using-resultt-e-in-tests">Using Result&lt;T, E&gt; in Tests</a></h2>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[test]
 fn it_works() -&gt; Result&lt;(), String&gt; {
